@@ -39,7 +39,7 @@
             <div class="login-box ptb--50">
                 <form action="<?= base_url('login/login_aksi');?>" method="post">
                     <div class="login-form-head">
-                        <h4>Login System</h4>
+                        <h4>Login To System</h4>
                         <!-- <p>Hello there, Sign in and start managing your Admin Template</p> -->
                         <p>Silahkan Login</p>
                     </div>
