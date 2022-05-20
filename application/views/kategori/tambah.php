@@ -3,7 +3,7 @@
             <form action="<?=base_url('admin/kategori/tambah');?>" class="form-horizontal" method="POST">
             <div class="form-group">
                     <label for="">Kode</label>
-                    <input type="text" name="kode" placeholder="Masukkan Kategori" class="form-control">
+                    <input type="text" name="kode" placeholder="Masukkan Kode Barang" class="form-control">
                     <small><span class="text-danger"><?=form_error('kode');?></span></small>
                 </div>
                 <div class="form-group">
@@ -19,7 +19,7 @@
                 </div>
             
                 <button type="submit" class="btn btn-primary mb-2">Tambah Data</button>
-                <a href="<?=base_url('kategori');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/kategori');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

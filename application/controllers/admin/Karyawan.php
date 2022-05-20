@@ -46,7 +46,7 @@ class Karyawan extends CI_Controller {
         }else {
             $this->M_karyawan->tambahDataKaryawan();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('karyawan');
+            redirect('admin/karyawan');
         }
         
     }
@@ -59,7 +59,7 @@ class Karyawan extends CI_Controller {
     public function hapus($id){
         $this->M_karyawan->hapusDataKaryawan($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('karyawan');
+        redirect('admin/karyawan');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Karyawan';
@@ -80,10 +80,10 @@ class Karyawan extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header',$topik);
             $this->load->view('karyawan/edit',$data);
-        }else {
+        } else {
             $this->M_karyawan->ubahDataKaryawan();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('karyawan');
+            redirect('admin/karyawan');
         }
 }
     // public function edit($id){
@@ -101,7 +101,7 @@ class Karyawan extends CI_Controller {
     //     }else {
     //         $this->M_kategori->ubahDataKategori();
     //         $this->session->set_flashdata('flash','Diubah');
-    //         redirect('kategori');
+    //         redirect('admin/kategori');
     //     }
     // }
    

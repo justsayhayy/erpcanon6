@@ -1,13 +1,12 @@
 <div class="container">
     <div class="col-md-6">
-        <h5>Tambah Form Edit</h5>
 
         <form action="" method="POST"> 
             <input type="hidden" name="id" class="form-control" value="<?= $karyawan['id'];?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="inputKode">ID</label>
-                <input type="text" class="form-control" id="inputKode" name="kode_id"  value="<?= $karyawan['kode_id'];?>">
+                <input type="text" class="form-control" id="inputKode" name="kode"  value="<?= $karyawan['kode'];?>">
                 </div>
                 <div class="form-group col-md-6">
                 <label for="inputNama">Nama</label>
@@ -59,7 +58,7 @@
                
 
             <button type="submit" class="btn btn-primary">Edit Data</button>
-            <a href="<?= base_url('karyawan');?>" class="btn btn-success">Kembali</a>
+            <a href="<?= base_url('admin/karyawan');?>" class="btn btn-success">Kembali</a>
             </form>
     </div>
 </div>

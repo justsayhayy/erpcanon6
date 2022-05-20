@@ -1,12 +1,12 @@
 
-<div class="">
+<div class="container">
         <div class="col-md-6">
             <!-- <h2 class="">Form Tambah Data</h2> -->
-            <form action="<?= base_url('gudang/tambah');?>" class="form-horizontal" method="POST">
+            <form action="<?= base_url('admin/gudang/tambah');?>" class="form-horizontal" method="POST">
                 <div class="form-group">
                     <label for="">Kode</label>
                     <input type="text" class="form-control" id="kode" name="kode" value="G-<?php echo sprintf("%04s", $kode) ?>" readonly>
-                    <!-- <input type="text" name="kode" placeholder="Masukkan Kode" class="form-control" autofocus="on" autocomplete="off"> -->
+                    
                     <small><span class="text-danger"><?=form_error('kode');?></span></small>
                 </div>
             
@@ -22,7 +22,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary mb-2">Tambah Data</button>
-                <a href="<?=base_url('gudang');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/gudang');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

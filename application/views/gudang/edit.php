@@ -23,7 +23,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary mb-2">Ubah Data</button>
-                <a href="<?=base_url('gudang');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/gudang');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

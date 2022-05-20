@@ -21,7 +21,7 @@
                 </div>
             
                 <button type="submit" class="btn btn-primary mb-2">Edit Data</button>
-                <a href="<?=base_url('kategori');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/kategori');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

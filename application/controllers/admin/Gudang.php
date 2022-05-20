@@ -46,14 +46,14 @@ class Gudang extends CI_Controller {
         }else {
             $this->M_gudang->tambahDataGudang();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('gudang');
+            redirect('admin/gudang');
         }
         
     }
     public function hapus($id){
         $this->M_gudang->hapusDataGudang($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('gudang');
+        redirect('admin/gudang');
     }
     // public function search(){
        
@@ -80,7 +80,7 @@ class Gudang extends CI_Controller {
         }else {
             $this->M_gudang->ubahDataGudang();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('gudang');
+            redirect('admin/gudang');
         }
 }
         

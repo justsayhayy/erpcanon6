@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <h5>Tambah Form Data</h5>
 
-        <form action="<?= base_url('karyawan/tambah');?>" method="POST"> 
+        <form action="<?=base_url('admin/karyawan/tambah');?>" method="POST"> 
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="">Kode</label>
@@ -62,7 +62,7 @@
                
 
             <button type="submit" class="btn btn-primary">Tambah Data</button>
-            <a href="<?= base_url('karyawan');?>" class="btn btn-success">Kembali</a>
+            <a href="<?=base_url('admin/karyawan');?>" class="btn btn-success">Kembali</a>
             </form>
     </div>
 </div>
