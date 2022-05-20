@@ -14,7 +14,18 @@ class Barang extends CI_Controller {
     }
 
     public function index() {
-        $this->allBarang('n');
+        $topik['judul'] = 'Halaman Menu Produk';
+       
+        $x['data'] = $this->m_barang->show_barang();
+        $x['get_category'] = $this->m_barang->get_option();
+        $x['get_category1'] = $this->m_barang->get_option1();
+        
+        $x['get_kategori'] = $this->m_barang->get_option_kategori();
+        $x['get_gudang'] = $this->m_barang->get_option_gudang();
+     
+        $this->load->view('templates/header',$topik);
+        $this->load->view('barang/index_show',$x);
+        $this->load->view('templates/footer');
     }
 	
 	public function allBarang($show = NULL) {

@@ -49,7 +49,7 @@ class Login extends CI_Controller {
                     
                     $this->session->set_userdata($sess_data);
                     if ($data['id_role'] == 1) {
-                        redirect(base_url('dashboard'));
+                        redirect(base_url('admin/dashboard'));
                     } else {
                         redirect(base_url('dashboard2'));
                     }

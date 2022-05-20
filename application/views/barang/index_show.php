@@ -50,7 +50,7 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <form action="<?= base_url('barang/search'); ?>">
+            <form action="<?=base_url('admin/barang/search'); ?>">
                 <div class="d-flex align-items-start">
                     <div class="mr-1 flex-grow-1">
                         <div class="input-group input-group-sm mb-1">
@@ -65,7 +65,7 @@
             </form>
         </div>
         <div class="col-lg-6">
-            <form action="<?= base_url('barang/index_serach') ?>">
+            <form action="<?=base_url('admin/barang/index_serach') ?>">
                 <div class="d-flex align-items-start">
                     <div class="mr-1 flex-grow-1">
                         <div class="input-group input-group-sm mb-1">
@@ -92,14 +92,14 @@
     </div>
 
     <div class="my-2">
-        <a href="<?= base_url('barang/allBarang'); ?>" class="btn btn-primary">Show All</a>
+        <a href="<?=base_url('admin/barang/allBarang'); ?>" class="btn btn-primary">Show All</a>
         <a class="btn btn-info" href="#" data-toggle="modal" data-target="#modal_add_new">Tambah Data</a>
-        <a class="btn btn-success" href="<?= base_url('barang/import_excel');?>">Import Excel</a>
-        <a class="btn btn-success" href="<?= base_url('barang/excel');?>">Export Excel</a>
+        <a class="btn btn-success" href="<?=base_url('admin/barang/import_excel');?>">Import Excel</a>
+        <a class="btn btn-success" href="<?=base_url('admin/barang/excel');?>">Export Excel</a>
         <button class="btn btn-secondary" onclick="transferAntarGdg()">Transfer Antar Gudang</button>
         <button class="btn btn-warning" onclick="returnKeSupplier()">Return Ke Supplier</button>
-        <!-- <a href="<?= base_url('barang/transfer_gudang');?>" class="btn btn-secondary mb-2">Transfer Antar Gudang</a> -->
-        <!-- <a href="<?= base_url('barang/laporan_pdf');?>" class="btn btn-danger mb-2">Export PDF</a> -->
+        <!-- <a href="<?=base_url('admin/barang/transfer_gudang');?>" class="btn btn-secondary mb-2">Transfer Antar Gudang</a> -->
+        <!-- <a href="<?=base_url('admin/barang/laporan_pdf');?>" class="btn btn-danger mb-2">Export PDF</a> -->
     </div>
 
     <table id="lookup" class="table-responsive table table-hover" cellspacing="2" style="font-size:11px;">
@@ -600,7 +600,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('transfer_gudang/tambahDataTransferGdg'); ?>" method="POST">
+                <form action="<?=base_url('admin/transfer_gudang/tambahDataTransferGdg'); ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -678,7 +678,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('return_supplier/tambahDataReturnSupplier'); ?>" method="POST">
+                <form action="<?=base_url('admin/return_supplier/tambahDataReturnSupplier'); ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -813,7 +813,7 @@
     }
 
     document.getElementById('check').addEventListener('click', function(e) {
-        fetch('<?= base_url('transfer_gudang/getLatestDate'); ?>')
+        fetch('<?=base_url('admin/transfer_gudang/getLatestDate'); ?>')
             .then(response => response.json())
             .then((result) => {
                 $('input[name=tgl_tfgdg]').val(result);
@@ -835,13 +835,13 @@
     function transferAntarGdg() {
         const d = new Date();
 
-        fetch('<?= base_url('transfer_gudang/getLatestNoTf'); ?>')
+        fetch('<?=base_url('admin/transfer_gudang/getLatestNoTf'); ?>')
             .then(response => response.json())
             .then((result) => {
                 $('input[name=no_transfer_tfgdg]').val(result);
             });
 
-        fetch('<?= base_url('barang/all_gudang'); ?>')
+        fetch('<?=base_url('admin/barang/all_gudang'); ?>')
             .then(response => response.json())
             .then((result) => {
                 let data = `<option value="">Pilih gudang</option>`;
@@ -865,13 +865,13 @@
 
     function returnKeSupplier() {
         const d = new Date();
-        fetch('<?= base_url('return_supplier/getLatestNoReturn'); ?>')
+        fetch('<?=base_url('admin/return_supplier/getLatestNoReturn'); ?>')
             .then(response => response.json())
             .then((result) => {
                 $('input[name=no_return_returnsuppl]').val(result);
             });
 
-        fetch('<?= base_url('supplier/getAllSupplier'); ?>')
+        fetch('<?=base_url('admin/supplier/getAllSupplier'); ?>')
             .then(response => response.json())
             .then((result) => {
                 let data = `<option value="">Pilih supplier</option>`;
@@ -890,7 +890,7 @@
     }
 
     function getBarang(id) {
-        fetch('<?= base_url('barang/getBarang/'); ?>'+id)
+        fetch('<?=base_url('admin/barang/getBarang/'); ?>'+id)
             .then(response => response.json())
             .then((result) => {
                 document.getElementById('inputKode').value = result.kode;
@@ -909,7 +909,7 @@
 
     document.getElementById('inputKode').addEventListener('input', function() {
         if( this.value != "" ) {
-            fetch('<?= base_url('barang/searchBarang/'); ?>'+this.value)
+            fetch('<?=base_url('admin/barang/searchBarang/'); ?>'+this.value)
                 .then(response => response.json())
                 .then((results) => {
                     if (!results[0]) {

@@ -26,14 +26,14 @@ class Kategori extends CI_Controller
         }else {
             $this->M_kategori->tambahDataKategori();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('kategori');
+            redirect('admin/kategori');
         }
         
     }
     public function hapus($id){
         $this->M_kategori->hapusDataKategori($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('kategori');
+        redirect('admin/kategori');
 
     }
     public function edit($id){
@@ -51,7 +51,7 @@ class Kategori extends CI_Controller
         }else {
             $this->M_kategori->ubahDataKategori();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('kategori');
+            redirect('admin/kategori');
         }
     }
 }

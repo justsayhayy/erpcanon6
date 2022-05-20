@@ -4,7 +4,7 @@
     
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('admin/dashboard');?>">
         <!-- <div class="sidebar-brand-icon rotate-n-15"> -->
         <div class="sidebar-brand-icon">
           <!-- <i class="fas fa-laugh-wink"></i> -->
@@ -21,18 +21,10 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?=base_url('dashboard');?>">
+        <a class="nav-link" href="<?=base_url('admin/dashboard');?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active ml-3">
-      <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="darkSwitch">
-            <label class="custom-control-label text-white" for="darkSwitch">Dark Mode</label>
-          </div>
-        </li>
-      <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
@@ -41,14 +33,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a href="<?=base_url('message');?>" class="nav-link collapsed" href="#" data-toggle="message" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-comments"></i>
-          <span>Chat</span>
-        </a>
-      </li>
-
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
@@ -58,16 +43,16 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Master:</h6>
-            <a class="collapse-item" href="<?=base_url('barang');?>">Barang</a>
-            <a class="collapse-item" href="<?=base_url('kategori');?>">Kategori</a>
-            <a class="collapse-item" href="<?=base_url('gudang');?>">Gudang</a>
-            <a class="collapse-item" href="<?=base_url('karyawan');?>">Karyawan</a>
-            <a class="collapse-item" href="<?=base_url('supplier');?>">Supplier</a>
-            <a class="collapse-item" href="<?=base_url('daftar_mitra');?>">Daftar Mitra</a>
-            <a class="collapse-item" href="<?=base_url('profil');?>">Profil Perusahaan</a>
+            <a class="collapse-item" href="<?=base_url('admin/barang');?>">Barang</a>
+            <a class="collapse-item" href="<?=base_url('admin/kategori');?>">Kategori</a>
+            <a class="collapse-item" href="<?=base_url('admin/gudang');?>">Gudang</a>
+            <a class="collapse-item" href="<?=base_url('admin/karyawan');?>">Karyawan</a>
+            <a class="collapse-item" href="<?=base_url('admin/supplier');?>">Supplier</a>
+            <a class="collapse-item" href="<?=base_url('admin/daftar_mitra');?>">Daftar Mitra</a>
+            <a class="collapse-item" href="<?=base_url('admin/profil');?>">Profil Perusahaan</a>
             <!-- <a class="collapse-item" href="<?
             // =base_url('rajaongkir');?>">Tarif Kirim</a> -->
-            <a class="collapse-item" href="<?=base_url('ekspedisi');?>">Daftar Ekspedisi</a>
+            <a class="collapse-item" href="<?=base_url('admin/ekspedisi');?>">Daftar Ekspedisi</a>
 
           </div>
         </div>
@@ -83,12 +68,12 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Transaksi:</h6>
-            <a class="collapse-item" href="<?=base_url('penerimaan');?>">Penerimaan Barang</a>
-            <a class="collapse-item" href="<?=base_url('pengiriman');?>">Pengiriman Barang</a>
-            <a class="collapse-item" href="<?=base_url('pendapatan');?>">Pendapatan Lain</a>
-            <a class="collapse-item" href="<?=base_url('pengeluaran');?>">Pengeluaran</a>
-            <a class="collapse-item" href="<?=base_url('hutang');?>">Hutang Piutang</a>
-            <a class="collapse-item" href="<?=base_url('gaji');?>">Gaji Karyawan</a>
+            <a class="collapse-item" href="<?=base_url('admin/penerimaan');?>">Penerimaan Barang</a>
+            <a class="collapse-item" href="<?=base_url('admin/pengiriman');?>">Pengiriman Barang</a>
+            <a class="collapse-item" href="<?=base_url('admin/pendapatan');?>">Pendapatan Lain</a>
+            <a class="collapse-item" href="<?=base_url('admin/pengeluaran');?>">Pengeluaran</a>
+            <a class="collapse-item" href="<?=base_url('admin/hutang');?>">Hutang Piutang</a>
+            <a class="collapse-item" href="<?=base_url('admin/gaji');?>">Gaji Karyawan</a>
           </div>
         </div>
       </li>
@@ -140,13 +125,13 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub Menu Bulletin:</h6>
-            <a class="collapse-item" href="<?=base_url('juice_4u');?>">Juice 4U</a>
-            <a class="collapse-item" href="<?=base_url('juice_distri');?>">Juice Distributor</a>
-            <a class="collapse-item" href="<?=base_url('top_lead');?>">Top Leader</a>
-            <a class="collapse-item" href="<?=base_url('top_asmen');?>">Top Asmen</a>
-            <a class="collapse-item" href="<?=base_url('hot_news');?>">Hot News</a>
-            <a class="collapse-item" href="<?=base_url('product_chart');?>">Production Chart</a>
-            <a class="collapse-item" href="<?=base_url('sales_sum');?>">Sales Summary</a>
+            <a class="collapse-item" href="<?=base_url('admin/juice_4u');?>">Juice 4U</a>
+            <a class="collapse-item" href="<?=base_url('admin/juice_distri');?>">Juice Distributor</a>
+            <a class="collapse-item" href="<?=base_url('admin/top_lead');?>">Top Leader</a>
+            <a class="collapse-item" href="<?=base_url('admin/top_asmen');?>">Top Asmen</a>
+            <a class="collapse-item" href="<?=base_url('admin/hot_news');?>">Hot News</a>
+            <a class="collapse-item" href="<?=base_url('admin/product_chart');?>">Production Chart</a>
+            <a class="collapse-item" href="<?=base_url('admin/sales_sum');?>">Sales Summary</a>
           </div>
         </div>
       </li>
@@ -160,19 +145,19 @@
         <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub Menu Laporan:</h6>
-            <a class="collapse-item" href="<?=base_url('manager/managerreport');?>">Manager</a>
-            <a class="collapse-item" href="<?=base_url('asst_manager');?>">Asst Manager</a>
-            <a class="collapse-item" href="<?=base_url('win2_manager');?>">Win2 Manager</a>
-            <a class="collapse-item" href="<?=base_url('saving_overrides');?>">Saving Overrides</a>
-            <a class="collapse-item" href="<?=base_url('gross_sale');?>">Gross Sales</a>
-            <a class="collapse-item" href="<?=base_url('transfer_gudang');?>">Transfer Gudang</a>
-            <a class="collapse-item" href="<?=base_url('return_gudang');?>">Retur Gudang</a>
-            <a class="collapse-item" href="<?=base_url('return_supplier');?>">Retur Supplier</a>
-            <a class="collapse-item" href="<?=base_url('stok_akhir');?>">Stok Akhir</a>
-            <a class="collapse-item" href="<?=base_url('stok');?>">Stok</a>
-            <a class="collapse-item" href="<?=base_url('kartu_stok');?>">Kartu Stok</a>
-            <a class="collapse-item" href="<?=base_url('adjust_stok');?>">Adjuct Stok</a>
-            <a class="collapse-item" href="<?=base_url('detail_stok');?>">Detail Stok</a>
+            <a class="collapse-item" href="<?=base_url('admin/manager/managerreport');?>">Manager</a>
+            <a class="collapse-item" href="<?=base_url('admin/asst_manager');?>">Asst Manager</a>
+            <a class="collapse-item" href="<?=base_url('admin/win2_manager');?>">Win2 Manager</a>
+            <a class="collapse-item" href="<?=base_url('admin/saving_overrides');?>">Saving Overrides</a>
+            <a class="collapse-item" href="<?=base_url('admin/gross_sale');?>">Gross Sales</a>
+            <a class="collapse-item" href="<?=base_url('admin/transfer_gudang');?>">Transfer Gudang</a>
+            <a class="collapse-item" href="<?=base_url('admin/return_gudang');?>">Retur Gudang</a>
+            <a class="collapse-item" href="<?=base_url('admin/return_supplier');?>">Retur Supplier</a>
+            <a class="collapse-item" href="<?=base_url('admin/stok_akhir');?>">Stok Akhir</a>
+            <a class="collapse-item" href="<?=base_url('admin/stok');?>">Stok</a>
+            <a class="collapse-item" href="<?=base_url('admin/kartu_stok');?>">Kartu Stok</a>
+            <a class="collapse-item" href="<?=base_url('admin/adjust_stok');?>">Adjuct Stok</a>
+            <a class="collapse-item" href="<?=base_url('admin/detail_stok');?>">Detail Stok</a>
 
           </div>
         </div>
@@ -188,12 +173,12 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub Menu User Account:</h6>
             <?php if ($this->session->userdata('id_role') == 1) : ?>
-            <a class="collapse-item" href="<?=base_url('users');?>">User Login</a>
-            <a class="collapse-item" href="<?=base_url('users/changepassword');?>">Ganti Password</a>
-            <a class="collapse-item" href="<?=base_url('hakakses');?>">Hak Akses User</a>
-            <a class="collapse-item" href="<?=base_url('activity');?>">Activity Record</a>
+            <a class="collapse-item" href="<?=base_url('admin/users');?>">User Login</a>
+            <a class="collapse-item" href="<?=base_url('admin/users/changepassword');?>">Ganti Password</a>
+            <a class="collapse-item" href="<?=base_url('admin/hakakses');?>">Hak Akses User</a>
+            <a class="collapse-item" href="<?=base_url('admin/activity');?>">Activity Record</a>
             <?php else : ?>
-            <a class="collapse-item" href="<?=base_url('users/changepassword');?>">Ganti Password</a>
+            <a class="collapse-item" href="<?=base_url('admin/users/changepassword');?>">Ganti Password</a>
             <?php endif; ?>
           </div>
         </div>
@@ -209,14 +194,14 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             
-            <a class="collapse-item" href="<?=base_url('backup');?>">Maintenance Database</a>
-            <a class="collapse-item" href="<?=base_url('about');?>">About</a>
+            <a class="collapse-item" href="<?=base_url('admin/backup');?>">Maintenance Database</a>
+            <a class="collapse-item" href="<?=base_url('admin/about');?>">About</a>
           </div>
         </div>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('auth/logout')?>">
+        <a class="nav-link" href="<?=base_url('admin/auth/logout')?>">
           <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
           <span>Log Out</span></a>
       </li>

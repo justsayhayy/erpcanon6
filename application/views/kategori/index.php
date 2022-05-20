@@ -1,26 +1,6 @@
 <div class="content-wrapper col-12">
 <section class="content-header ml mt-2 auto">
 
-<!-- <ol class=""> -->
-<!-- <h2>
-    Menu Data Produk
-    <div class="row mt-3">
-    <div class="col-md-6">
-        <form action="" method="post">
-            <div class="input-group">
-            <input type="text" name="keyword" id="" placeholder="Cari Data Produk..." class="form-control" autocomplete="off">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">Cari</button>
-            </div>
-            </div>
-        </form>
-    </div>
-</div>
-</h2> -->
-
-  
-
-</ol>
 <div style="margin-left:5px">
 
 <div class="">
@@ -43,10 +23,9 @@
     </div>    
 </div>
 <?php endif;?>
-<a href="<?= base_url('kategori/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
+<a href="<?=base_url('admin/kategori/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
 <div class="table-responsive">
-<!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
-<table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="" style="font-size: small;">
+<table id="dataTable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="" style="font-size: small;">
 
         <thead>
             <tr style="text-align:center">
@@ -81,8 +60,8 @@
                         Action
                     </button>
                     <div class="dropdown-menu"> -->
-                    <a href="<?php echo base_url();?>kategori/edit/<?= $erp['id'];?>" class="btn btn-success" style=""><i class="fa fa-edit"></i>Edit</i></a>
-                    <a href="<?= base_url();?>kategori/hapus/<?= $erp['id'];?>" class="btn btn-danger " style="" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
+                    <a href="<?= base_url();?>admin/kategori/edit/<?= $erp['id'];?>" class="btn btn-success" style=""><i class="fa fa-edit"></i>Edit</i></a>
+                    <a href="<?= base_url();?>admin/kategori/hapus/<?= $erp['id'];?>" class="btn btn-danger " style="" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
                     <!-- </div> -->
                 <!-- </div> -->
                 </td>

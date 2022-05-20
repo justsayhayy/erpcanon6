@@ -1,7 +1,6 @@
 <div class="container">
         <div class="col-md-6">
-            <h2 class="">Form Tambah Data</h2>
-            <form action="<?= base_url('kategori/tambah');?>" class="form-horizontal" method="POST">
+            <form action="<?=base_url('admin/kategori/tambah');?>" class="form-horizontal" method="POST">
             <div class="form-group">
                     <label for="">Kode</label>
                     <input type="text" name="kode" placeholder="Masukkan Kategori" class="form-control">
