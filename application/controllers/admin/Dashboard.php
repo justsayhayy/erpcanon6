@@ -22,9 +22,9 @@ class Dashboard extends CI_Controller {
         $data['gudang'] = $this->M_gudang->hitungJumlahAsset();
         $data['karyawan'] = $this->M_karyawan->hitungJumlahAsset();
 
-		$this->load->view('templates/header',$topik);
-        $this->load->view('dashboard/index',$data);
-        $this->load->view('templates/footer');
+		$this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/dashboard/index',$data);
+        $this->load->view('admin/templates/footer');
     }
    
 }

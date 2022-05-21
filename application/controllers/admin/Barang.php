@@ -23,9 +23,9 @@ class Barang extends CI_Controller {
         $x['get_kategori'] = $this->m_barang->get_option_kategori();
         $x['get_gudang'] = $this->m_barang->get_option_gudang();
      
-        $this->load->view('templates/header',$topik);
-        $this->load->view('barang/index_show',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/barang/index_show',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 	public function allBarang($show = NULL) {
@@ -43,9 +43,9 @@ class Barang extends CI_Controller {
         $x['get_kategori'] = $this->m_barang->get_option_kategori();
         $x['get_gudang'] = $this->m_barang->get_option_gudang();
      
-        $this->load->view('templates/header',$topik);
-        $this->load->view('barang/index_show',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/barang/index_show',$x);
+        $this->load->view('admin/templates/footer');
     }
 
     public function all_gudang() {
@@ -59,9 +59,9 @@ class Barang extends CI_Controller {
 		$x['get_kategori'] = $this->m_barang->get_option_kategori();
 		$x['get_gudang'] = $this->m_barang->get_option_gudang();
      
-        $this->load->view('templates/header',$topik);
-        $this->load->view('barang/index_serach',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/barang/index_serach',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 	public function search(){
@@ -69,9 +69,9 @@ class Barang extends CI_Controller {
 		$x['data']=$this->m_barang->show_barang();
         $x['data'] = $this->m_barang->search_kode();
 		
-        $this->load->view('templates/header',$topik);
+        $this->load->view('admin/templates/header',$topik);
         $this->load->view('barang/search',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
 
     public function searchBarang($input = NULL) {
@@ -107,8 +107,8 @@ class Barang extends CI_Controller {
         // $this->form_validation->set_rules('image','Image','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('barang/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/barang/tambah');
         }else {
             $this->m_barang->tambahDataProduct();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -158,7 +158,7 @@ class Barang extends CI_Controller {
 			);
 		  $this->m_barang->input_data($data,'produk');
 		    $this->session->set_flashdata('flash','Ditambahkan');
-		   redirect('barang/index');
+		   redirect('admin/barang/index');
 			
 	}
 	
@@ -183,8 +183,8 @@ class Barang extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('barang/edit_form',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/barang/edit_form',$data);
         }else {
             $this->m_barang->ubahDataProduct();
             $this->session->set_flashdata('flash','Diubah');
@@ -203,7 +203,7 @@ class Barang extends CI_Controller {
     // }
     // public function export_excel(){
     //     $data['produk'] = $this->m_barang->get_by_role();
-    //     $this->load->view('barang/laporan_excel',$data);
+    //     $this->load->view('admin/barang/laporan_excel',$data);
     //     }
     //     public function export_excel(){
     //     // Skrip berikut ini adalah skrip yang bertugas untuk meng-export data tadi ke excel
@@ -212,7 +212,7 @@ class Barang extends CI_Controller {
         
     //     // $data['produk'] = $this->SiswaModel->view();
     //     $data['produk'] = $this->m_barang->get_by_role();
-    //     $this->load->view('barang/laporan_excel', $data);
+    //     $this->load->view('admin/barang/laporan_excel', $data);
     //   }
     public function excel()
     {
@@ -293,7 +293,7 @@ class Barang extends CI_Controller {
     
         $this->pdf->setPaper('A4', 'landscape');
         $this->pdf->filename = "laporan-petanikode.pdf";
-        $this->pdf->load_view('barang/laporan_pdf', $data);
+        $this->pdf->load_view('admin/barang/laporan_pdf', $data);
     
     
     }

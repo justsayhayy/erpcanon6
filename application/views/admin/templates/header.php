@@ -81,7 +81,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-     <?php $this->load->view('templates/menu'); ?>
+     <?php $this->load->view('admin/templates/menu'); ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->

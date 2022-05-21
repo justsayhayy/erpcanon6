@@ -9,9 +9,9 @@ class Kategori extends CI_Controller
     public function index(){
         $topik['judul'] = 'Halaman Menu Kategori';
         $data['kategori'] = $this->M_kategori->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('kategori/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/kategori/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Kategori';
@@ -21,8 +21,8 @@ class Kategori extends CI_Controller
         $this->form_validation->set_rules('description','Description','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('kategori/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/kategori/tambah');
         }else {
             $this->M_kategori->tambahDataKategori();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -46,8 +46,8 @@ class Kategori extends CI_Controller
         $this->form_validation->set_rules('description','Description','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('kategori/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/kategori/edit',$data);
         }else {
             $this->M_kategori->ubahDataKategori();
             $this->session->set_flashdata('flash','Diubah');
