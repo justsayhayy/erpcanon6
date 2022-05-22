@@ -10,9 +10,9 @@ class Hakakses extends CI_Controller
     public function index(){
         $topik['judul'] = 'Halaman Menu User';
         $data['tbl_role'] = $this->m_role->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('hakakses/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/hakakses/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     
 }

@@ -13,9 +13,9 @@ class Karyawan extends CI_Controller {
         if ($this->input->post('keyword')) {
             $data['karyawan'] = $this->M_karyawan->cariDataKaryawan();
         }
-        $this->load->view('templates/header',$topik);
-        $this->load->view('karyawan/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/karyawan/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function tambah(){
@@ -40,9 +40,9 @@ class Karyawan extends CI_Controller {
             $data['jabatan'] = ['Logitic','Finance & Accounting','Administration','Inventory','General Affair','IT','HRD','Messenger','Resepsionist','Non Aktif'];
 
 
-            $this->load->view('templates/header',$data2);
-            $this->load->view('karyawan/tambah',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$data2);
+            $this->load->view('admin/karyawan/tambah',$data);
+            $this->load->view('admin/templates/footer');
         }else {
             $this->M_karyawan->tambahDataKaryawan();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -53,8 +53,8 @@ class Karyawan extends CI_Controller {
     public function detail($id){
         $topik['judul'] = 'Detail Data Karyawan';
         $data['karyawan'] = $this->M_karyawan->getKaryawanById($id);
-        $this->load->view('templates/header',$topik);
-        $this->load->view('karyawan/detail',$data);
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/karyawan/detail',$data);
     }
     public function hapus($id){
         $this->M_karyawan->hapusDataKaryawan($id);
@@ -78,8 +78,8 @@ class Karyawan extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('karyawan/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/karyawan/edit',$data);
         } else {
             $this->M_karyawan->ubahDataKaryawan();
             $this->session->set_flashdata('flash','Diubah');

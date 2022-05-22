@@ -10,9 +10,9 @@ class Gaji extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Gaji';
         $data['gaji'] = $this->m_gaji->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('gajikaryawan/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/gajikaryawan/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Gaji';
@@ -28,19 +28,19 @@ class Gaji extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('gajikaryawan/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/gajikaryawan/tambah');
         }else {
             $this->m_gaji->tambahDataGaji();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('gaji');
+            redirect('admin/gaji');
         }
         
     }
     public function hapus($id){
         $this->m_gaji->hapusDataGaji($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('gaji');
+        redirect('admin/gaji');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Daftar Mitra';
@@ -57,12 +57,12 @@ class Gaji extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('gajikaryawan/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/gajikaryawan/edit',$data);
         }else {
             $this->m_gaji->ubahDataGaji();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('gaji');
+            redirect('admin/gaji');
         }
 }
 }

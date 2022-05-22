@@ -10,9 +10,9 @@ class Pengeluaran extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Pengeluaran';
         $data['pengeluaran'] = $this->m_pengeluaran->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('pengeluaran/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/pengeluaran/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Pengeluaran';
@@ -25,12 +25,12 @@ class Pengeluaran extends CI_Controller {
         $this->form_validation->set_rules('no_akun','No_akun','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('pengeluaran/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/pengeluaran/tambah');
         }else {
             $this->m_pengeluaran->tambahDataPengeluaran();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('pengeluaran');
+            redirect('admin/pengeluaran');
         }
         
     }
@@ -58,12 +58,12 @@ class Pengeluaran extends CI_Controller {
         $this->form_validation->set_rules('no_akun','No_akun','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('pengeluaran/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/pengeluaran/edit',$data);
         }else {
             $this->m_pengeluaran->ubahDataPengeluaran();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('pengeluaran');
+            redirect('admin/pengeluaran');
         }
 }
 }

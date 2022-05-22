@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('M_karyawan');
         // $this->check_login();
         if ($this->session->userdata('id_role') != 1) {
-            redirect('auth/login', 'refresh');
+            redirect('admin/auth/login', 'refresh');
         }
     }
 	public function index()

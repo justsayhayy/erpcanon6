@@ -10,9 +10,9 @@ class Return_gudang extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Return_gudang';
         $data['return_gudang'] = $this->m_returngudang->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('return_gudang/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/return_gudang/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Return_gudang';
@@ -27,19 +27,19 @@ class Return_gudang extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('return_gudang/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/return_gudang/tambah');
         }else {
             $this->m_returngudang->tambahDataReturn_gudang();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('return_gudang');
+            redirect('admin/return_gudang');
         }
         
     }
     public function hapus($id){
         $this->m_returngudang->hapusDataReturn_gudang($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('return_gudang');
+        redirect('admin/return_gudang');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Return_gudang';
@@ -56,12 +56,12 @@ class Return_gudang extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('return_gudang/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/return_gudang/edit',$data);
         }else {
             $this->m_returngudang->ubahDataReturn_gudang();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('return_gudang');
+            redirect('admin/return_gudang');
         }
 }
 }

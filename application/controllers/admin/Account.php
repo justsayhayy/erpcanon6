@@ -11,9 +11,9 @@ class Account extends CI_Controller
         $topik['judul'] = 'Halaman Menu Chart Of Account';
         // $data['tanggal'] = $this->get_tgl();
         // $data['chartofaccount'] = $this->M_account->tampil_data();
-        $this->load->view('templates/header',$topik);
+        $this->load->view('about/templates/header',$topik);
         $this->load->view('chartofaccount/index');
-        $this->load->view('templates/footer');
+        $this->load->view('about/templates/footer');
     }
 
     public function tampil_data($weekending = NULL) {

@@ -12,18 +12,18 @@ class Manager extends CI_Controller {
         $data['manager'] = $this->m_manager->tampil_data();
         $data['kode_barang'] = $this->m_manager->kode_barang();
         $data['latest_no_invoice'] = $this->m_manager->latest_no_invoice();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('manager/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/manager/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function managerReport() {
         $topik['judul'] = 'Halaman Menu Laporan Manager';
         $data['manager'] = $this->m_manager->tampil_data();
         $data['kode_barang'] = $this->m_manager->kode_barang();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('managerreport/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/managerreport/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function fetchInOut($no_invoice) {
@@ -71,7 +71,7 @@ class Manager extends CI_Controller {
     public function tambah() {
             $this->m_manager->tambahDataPenjualanManager();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('manager');
+            redirect('admin/manager');
     }
 
     public function tambahInOut() {
@@ -114,7 +114,7 @@ class Manager extends CI_Controller {
     public function hapus($id){
         $this->m_manager->hapusDataManager($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('manager');
+        redirect('admin/manager');
     }
 
     public function getData($id) {
@@ -131,12 +131,12 @@ class Manager extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('manager/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/manager/edit',$data);
         }else {
             $this->m_manager->ubahDataManager();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('manager');
+            redirect('admin/manager');
         }
 }
 }

@@ -11,9 +11,9 @@ class Hot_news extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Hot_news';
         $data['tgl'] = $this->m_news->weekending();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('hotnews/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/hotnews/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getData($weekending = NULL) {
@@ -32,12 +32,12 @@ class Hot_news extends CI_Controller {
 
         $this->m_news->tambahDataNews();
         $this->session->set_flashdata('flash','Ditambahkan');
-        redirect('hot_news');        
+        redirect('admin/hot_news');        
     }
     public function hapus($id){
         $this->m_news->hapusDataNews($id);
         $this->session->set_flashdata('flash','Dihapus');
-        redirect('hot_news');
+        redirect('admin/hot_news');
     }
 
     public function edit() {
@@ -48,7 +48,7 @@ class Hot_news extends CI_Controller {
 
         $this->m_news->ubahDataNews();
         $this->session->set_flashdata('flash','Diubah');
-        redirect('hot_news');
+        redirect('admin/hot_news');
 
     }
 }

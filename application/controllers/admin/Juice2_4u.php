@@ -17,9 +17,9 @@ class Juice2_4u extends CI_Controller {
         // if ($this->input->post('keyword')) {
         //     $data['gudang'] = $this->m_gudang->cariDataGudang();
         // }
-        $this->load->view('templates2/header',$topik);
-        $this->load->view('juice2/index',$data);
-        $this->load->view('templates2/footer');
+        $this->load->view('admin/templates2/header',$topik);
+        $this->load->view('admin/juice2/index',$data);
+        $this->load->view('admin/templates2/footer');
     }
 
     public function get_tgl() {
@@ -45,12 +45,12 @@ class Juice2_4u extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates2/header',$data);
-            $this->load->view('juice/tambah');
+            $this->load->view('admin/templates2/header',$data);
+            $this->load->view('admin/juice/tambah');
         }else {
             $this->m_juice->tambahDataJuice();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('juice2_4u');
+            redirect('admin/juice2_4u');
         }
     }
    
@@ -62,19 +62,19 @@ class Juice2_4u extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('juice/edit');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/juice/edit');
         } else {
             $this->m_juice->editDataJuice();
             $this->session->set_flashdata('flash','Diedit');
-            redirect('juice2_4u');
+            redirect('admin/juice2_4u');
         }
     }
 
     public function hapus($id){
         $this->m_juice->hapusDataJuice($id);
         $this->session->set_flashdata('flash','Dihapus');
-        redirect('juice2_4u');
+        redirect('admin/juice2_4u');
         
     }
     

@@ -14,17 +14,17 @@ class Gudang extends CI_Controller {
             $data['gudang'] = $this->M_gudang->cariDataGudang();
         }
         
-        $this->load->view('templates/header',$topik);
-        $this->load->view('gudang/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/gudang/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function search(){
         $topik['judul'] = 'Halaman Menu Gudang';
         $keyword = $this->input->post('keyword');
         $data['gudang']=$this->M_gudang->get_product_keyword($keyword);
-        $this->load->view('templates/header',$topik);
-        $this->load->view('gudang/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/gudang/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data2['judul'] = 'Form Tambah Data Gudang';
@@ -40,9 +40,9 @@ class Gudang extends CI_Controller {
             $kodeGudangSekarang = $nourut + 1;
             $data = array("kode" => $kodeGudangSekarang);
 
-            $this->load->view('templates/header',$data2);
-            $this->load->view('gudang/tambah',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$data2);
+            $this->load->view('admin/gudang/tambah',$data);
+            $this->load->view('admin/templates/footer');
         }else {
             $this->M_gudang->tambahDataGudang();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -75,8 +75,8 @@ class Gudang extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('gudang/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/gudang/edit',$data);
         }else {
             $this->M_gudang->ubahDataGudang();
             $this->session->set_flashdata('flash','Diubah');

@@ -9,8 +9,9 @@ class Backup extends CI_Controller {
     // }
     public function index(){
         $topik['judul'] = 'Halaman Back Up Data'; 
-        $this->load->view('templates/header',$topik);
-        $this->load->view('backup/index');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/backup/index');
+        $this->load->view('admin/templates/footer');
     }
     public function backupdb(){
         // Load class utilities from database; 

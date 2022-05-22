@@ -11,9 +11,9 @@ class Neraca extends CI_Controller {
     
     public function index() {
         $topik['judul'] = 'Halaman Menu Neraca Lain';
-        $this->load->view('templates/header', $topik);
-        $this->load->view('neraca/index');
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header', $topik);
+        $this->load->view('admin/neraca/index');
+        $this->load->view('admin/templates/footer');
     }
 
     public function getData($weekending) {
@@ -29,27 +29,20 @@ class Neraca extends CI_Controller {
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('neraca/tambah');
+            $this->load->view('admin/templates/header', $data);
+            $this->load->view('admin/neraca/tambah');
         } else {
             $this->m_neraca->tambahDataNeraca();
             $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('neraca');
+            redirect('admin/neraca');
         }
         
     }
 
-    // public function detail($id){
-    //     $topik['judul'] = 'Detail Data Karyawan';
-    //     $data['neraca'] = $this->m_neraca->getPengirimanById($id);
-    //     $this->load->view('templates/header',$topik);
-    //     $this->load->view('neraca/detail',$data);
-    // }
-
     public function hapus($id) {
         $this->m_neraca->hapusDataNeraca($id);
         $this->session->set_flashdata('flash2', 'Dihapus');
-        redirect('neraca');
+        redirect('admin/neraca');
     }
 
     public function edit($id) {
@@ -63,12 +56,12 @@ class Neraca extends CI_Controller {
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $topik);
-            $this->load->view('neraca/edit', $data);
+            $this->load->view('admin/templates/header', $topik);
+            $this->load->view('admin/neraca/edit', $data);
         } else {
             $this->m_neraca->ubahDataNeraca();
             $this->session->set_flashdata('flash', 'Diubah');
-            redirect('neraca');
+            redirect('admin/neraca');
         }
     }
 }

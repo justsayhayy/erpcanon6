@@ -25,9 +25,9 @@ class Message extends CI_Controller {
     		$topik['judul'] = 'Halaman Menu Chat';
 			$data['status'] = $this->chats->get_stats()->result();
 			$data['chat']   = $this->chats->isi_chat()->result();
-			$this->load->view('templates/header',$topik);
-			$this->load->view('chat/index', $data);
-			$this->load->view('templates/footer');
+			$this->load->view('admin/templates/header',$topik);
+			$this->load->view('admin/chat/index', $data);
+			$this->load->view('admin/templates/footer');
 		}
 	// }
 
@@ -58,9 +58,9 @@ class Message extends CI_Controller {
 		} else {
 			$data['orang'] = $this->regis->orang();
 			$data['status'] = $this->chats->get_stats()->result();
-			$this->load->view('templates/header');
-			$this->load->view('pending', $data);
-			$this->load->view('templates/footer');
+			$this->load->view('admin/templates/header');
+			$this->load->view('admin/pending', $data);
+			$this->load->view('admin/templates/footer');
 		}
 	}
 

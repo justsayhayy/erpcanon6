@@ -10,9 +10,9 @@ class Sales_sum extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Summary';
         $data['summary'] = $this->M_summary->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('sales_summary/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/sales_summary/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getData($weekending) {
@@ -40,12 +40,12 @@ class Sales_sum extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('sales_summary/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/sales_summary/tambah');
         }else {
             $this->m_summary->tambahDataSummary();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('sales_sum');
+            redirect('admin/sales_sum');
         }
         
     }

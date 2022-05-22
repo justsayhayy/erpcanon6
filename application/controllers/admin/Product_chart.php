@@ -12,9 +12,9 @@ class Product_chart extends CI_Controller {
         $data['tgl'] = $this->m_chart->weekending();
         $data['jbtn'] = $this->m_chart->jabatan();
         $data['gdg'] = $this->m_chart->gudang();
-        $this->load->view('templates/header',$topik);                                                            
-        $this->load->view('productchart/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);                                                            
+        $this->load->view('admin/productchart/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getData($weekending = NULL, $jabatan = NULL, $gudang = NULL) {
@@ -37,19 +37,19 @@ class Product_chart extends CI_Controller {
         $this->form_validation->set_rules('total_poin','Total_poin','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('productchart/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/productchart/tambah');
         }else {
             $this->m_chart->tambahDataChart();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('product_chart');
+            redirect('admin/product_chart');
         }
         
     }
     public function hapus($id){
         $this->m_chart->hapusDataChart($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('product_chart');
+        redirect('admin/product_chart');
     }
 //     public function edit($id){
 //         $topik['judul'] = 'Edit Data Supplier';

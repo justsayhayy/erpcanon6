@@ -10,9 +10,9 @@ class Hutang extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Hutang';
         $data['hutang'] = $this->m_hutang->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('hutang/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/hutang/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Hutang';
@@ -29,12 +29,12 @@ class Hutang extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('hutang/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/hutang/tambah');
         }else {
             $this->m_hutang->tambahDataHutang();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('hutang');
+            redirect('admin/hutang');
         }
         
     }
@@ -47,7 +47,7 @@ class Hutang extends CI_Controller {
     public function hapus($id){
         $this->m_hutang->hapusDataHutang($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('hutang');
+        redirect('admin/hutang');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Hutang';
@@ -63,12 +63,12 @@ class Hutang extends CI_Controller {
         $this->form_validation->set_rules('saldo','Saldo','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('hutang/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/hutang/edit',$data);
         }else {
             $this->m_hutang->ubahDataHutang();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('hutang');
+            redirect('admin/hutang');
         }
 }
 }

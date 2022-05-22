@@ -10,9 +10,9 @@ class Asst_Manager extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Asisten Manager Lain';
         $data['manager'] = $this->M_manager->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('asst_manager/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/asst_manager/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Manager Lain';
@@ -23,8 +23,8 @@ class Asst_Manager extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('manager/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/manager/tambah');
         }else {
             $this->M_manager->tambahDataManager();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -54,12 +54,12 @@ class Asst_Manager extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('manager/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/manager/edit',$data);
         }else {
             $this->M_manager->ubahDataManager();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('manager');
+            redirect('admin/manager');
         }
 }
 }

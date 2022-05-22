@@ -13,9 +13,9 @@ class Daftar_mitra extends CI_Controller {
         if ($this->input->post('keyword')) {
             $data['daftar_mitra'] = $this->M_daftar->cariDataSupplier();
         }
-        $this->load->view('templates/header',$topik);
-        $this->load->view('daftarmitra/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/daftarmitra/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data2['judul'] = 'Form Tambah Data Daftar Mitra';
@@ -42,13 +42,13 @@ class Daftar_mitra extends CI_Controller {
             $data['gudang'] = $this->M_daftar->tampil_gudang();
             
             // $data['jabatan'] = ['Vice President','Divisional Manager','Branch Manager','Tenant Manager','Assistant Manager','Win-win Manager','Top Leader','Leader'];
-            $this->load->view('templates/header',$data2);
-            $this->load->view('daftarmitra/tambah',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$data2);
+            $this->load->view('admin/daftarmitra/tambah',$data);
+            $this->load->view('admin/templates/footer');
         }else {
             $this->M_daftar->tambahDataMitra();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('daftar_mitra');
+            redirect('admin/daftar_mitra');
         }
         
     }
@@ -69,12 +69,12 @@ class Daftar_mitra extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('supplier/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/supplier/edit',$data);
         }else {
             $this->M_supplier->ubahDataSupplier();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('supplier');
+            redirect('admin/supplier');
         }
 }
 }

@@ -13,8 +13,8 @@ class History extends CI_Controller {
         // if ($this->input->post('keyword')) {
         //     $data['gudang'] = $this->m_gudang->cariDataGudang();
         // }
-        $this->load->view('templates/header',$topik);
-        $this->load->view('history/index');
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/history/index');
+        $this->load->view('admin/templates/footer');
     }
 }

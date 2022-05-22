@@ -13,9 +13,9 @@ class Supplier extends CI_Controller {
         if ($this->input->post('keyword')) {
             $data['supplier'] = $this->M_supplier->cariDataSupplier();
         }
-        $this->load->view('templates/header',$topik);
-        $this->load->view('supplier/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/supplier/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getAllSupplier() {
@@ -36,20 +36,20 @@ class Supplier extends CI_Controller {
             $nourut = substr($dariDB, 5, 4);
             $kodeSupplierSekarang = $nourut + 1;
             $data = array("kode" => $kodeSupplierSekarang);
-            $this->load->view('templates/header',$data2);
-            $this->load->view('supplier/tambah',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$data2);
+            $this->load->view('admin/supplier/tambah',$data);
+            $this->load->view('admin/templates/footer');
         }else {
             $this->M_supplier->tambahDataSupplier();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('supplier');
+            redirect('admin/supplier');
         }   
     }
     
     public function hapus($id){
         $this->M_supplier->hapusDataSupplier($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('supplier');
+        redirect('admin/supplier');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Supplier';
@@ -63,12 +63,12 @@ class Supplier extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('supplier/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/supplier/edit',$data);
         }else {
             $this->M_supplier->ubahDataSupplier();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('supplier');
+            redirect('admin/supplier');
         }
 }
 }

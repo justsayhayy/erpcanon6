@@ -12,9 +12,9 @@ class Pengiriman extends CI_Controller {
         $x['data1'] = $this->m_pengiriman->tampil_data();
 				$x['kode'] = $this->m_pengiriman->kode();
 				$x['data'] = $this->m_pengiriman->tampil_datamitra();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('pengiriman/index',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/pengiriman/index',$x);
+        $this->load->view('admin/templates/footer');
     }
 		// $x['data2'] = $this->m_pengiriman->tampil_barang();
 	
@@ -34,7 +34,7 @@ class Pengiriman extends CI_Controller {
 	public function cetak_alamat(){
 		ob_start();
      $data['pengiriman'] = $this->m_pengiriman->tampil_cetak();
-	$this->load->view('pengiriman/print',$data);
+	$this->load->view('admin/pengiriman/print',$data);
 	$html = ob_get_contents();
         ob_end_clean();
         require_once('./asset/html2pdf/html2pdf.class.php');
@@ -72,9 +72,9 @@ class Pengiriman extends CI_Controller {
     $x['data'] = $this->m_pengiriman->tampil_datamitra();
     $x['gdg'] = $this->m_pengiriman->allGdg();
 
-    $this->load->view('templates/header',$data);
-    $this->load->view('pengiriman/tambah',$x);
-    $this->load->view('templates/footer');
+    $this->load->view('admin/templates/header',$data);
+    $this->load->view('admin/pengiriman/tambah',$x);
+    $this->load->view('admin/templates/footer');
   }
 
   public function tambahDataPengiriman() {
@@ -150,7 +150,7 @@ class Pengiriman extends CI_Controller {
     public function hapus($id){
         $this->m_pengiriman->hapusDataPengiriman($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('pengiriman');
+        redirect('admin/pengiriman');
     }
 
     public function edit($id = NULL) {
@@ -184,13 +184,13 @@ class Pengiriman extends CI_Controller {
       $this->form_validation->set_rules('no_do','No DO','required');
 
       if ($this->form_validation->run() == FALSE) {
-        $this->load->view('templates/header',$topik);
-        $this->load->view('pengiriman/edit',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/pengiriman/edit',$x);
+        $this->load->view('admin/templates/footer');
       } else {
         $this->m_pengiriman->ubahDataPengiriman();
         $this->session->set_flashdata('flash','Diubah');
-        redirect('pengiriman');
+        redirect('admin/pengiriman');
       }
     }
 	
@@ -224,13 +224,13 @@ class Pengiriman extends CI_Controller {
         $this->form_validation->set_rules('no_segel','No Segel','required');
         
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('pengiriman/edit_koreksi',$x);
-			$this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/pengiriman/edit_koreksi',$x);
+			$this->load->view('admin/templates/footer');
         }else {
             $this->m_pengiriman->ubahDataPengiriman();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('pengiriman');
+            redirect('admin/pengiriman');
         }
     }
 	
@@ -279,7 +279,7 @@ class Pengiriman extends CI_Controller {
 
 	$this->m_pengiriman->update_data($where, $data, 'pengiriman');
 	$this->session->set_flashdata('flash','Diubah');
-	redirect('pengiriman');
+	redirect('admin/pengiriman');
 }
 
 function update_koreksi(){
@@ -329,7 +329,7 @@ function update_koreksi(){
 
 	$this->m_pengiriman->update_data($where,$data,'pengiriman');
 	$this->session->set_flashdata('flash','Diubah');
-	redirect('pengiriman/index_tampil');
+	redirect('admin/pengiriman/index_tampil');
 }
 
 }

@@ -10,9 +10,9 @@ class Pendapatan extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Pendapatan Lain';
         $data['pendapatanlain'] = $this->m_pendapatanlain->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('pendapatanlain/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/pendapatanlain/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Pendapatan Lain';
@@ -23,12 +23,12 @@ class Pendapatan extends CI_Controller {
         $this->form_validation->set_rules('jumlah','Jumlah','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('pendapatanlain/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/pendapatanlain/tambah');
         }else {
             $this->m_pendapatanlain->tambahDataPendapatan();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('pendapatan');
+            redirect('admin/pendapatan');
         }
         
     }

@@ -10,9 +10,9 @@ class Deposit extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Deposit';
         $data['deposit'] = $this->M_deposit->tampil_data('','');
-        $this->load->view('templates/header',$topik);
-        $this->load->view('deposit/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/deposit/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function tampil_data($weekending = NULL, $jabatan = NULL) {
@@ -36,12 +36,12 @@ class Deposit extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('deposit/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/deposit/tambah');
         }else {
             $this->M_deposit->tambahDataDeposit();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('deposit');
+            redirect('admin/deposit');
         }
         
     }

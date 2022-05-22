@@ -11,9 +11,9 @@ class Transfer_gudang extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Transfer Gudang';
         $data['tf_gudang'] = $this->m_transfergudang->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('transfergudang/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/transfergudang/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getLatestNoTf() {
@@ -97,12 +97,12 @@ class Transfer_gudang extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('transfergudang/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/transfergudang/edit',$data);
         }else {
             $this->m_transfergudang->ubahDataTfGudang();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('transfer_gudang');
+            redirect('admin/transfer_gudang');
         }
 }
 }

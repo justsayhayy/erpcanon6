@@ -10,9 +10,9 @@ class Penjualan extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Penjualan';
         $data['pengeluaran'] = $this->m_pengeluaran->tampil_data();
-        $this->load->view('templates2/header',$topik);
-        $this->load->view('penjualan/index',$data);
-        $this->load->view('templates2/footer');
+        $this->load->view('admin/templates2/header',$topik);
+        $this->load->view('admin/penjualan/index',$data);
+        $this->load->view('admin/templates2/footer');
     }
     public function tambah2(){
         $data['judul'] = 'Form Tambah Data Penjualan';
@@ -25,8 +25,8 @@ class Penjualan extends CI_Controller {
         $this->form_validation->set_rules('no_akun','No_akun','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates2/header',$data);
-            $this->load->view('penjualan/tambah');
+            $this->load->view('admin/templates2/header',$data);
+            $this->load->view('admin/penjualan/tambah');
         }else {
             echo "Selamat, kamu berhasil";
         }
@@ -43,12 +43,12 @@ class Penjualan extends CI_Controller {
         $this->form_validation->set_rules('no_akun','No_akun','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates2/header',$data);
-            $this->load->view('pengeluaran/tambah');
+            $this->load->view('admin/templates2/header',$data);
+            $this->load->view('admin/pengeluaran/tambah');
         }else {
             $this->m_pengeluaran->tambahDataPengeluaran();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('pengeluaran');
+            redirect('admin/pengeluaran');
         }
         
     }
@@ -61,7 +61,7 @@ class Penjualan extends CI_Controller {
     public function hapus($id){
         $this->m_pengeluaran->hapusDataPengeluaran($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('pengeluaran');
+        redirect('admin/pengeluaran');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Penjualan';
@@ -81,7 +81,7 @@ class Penjualan extends CI_Controller {
         }else {
             $this->m_pengeluaran->ubahDataPengeluaran();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('pengeluaran');
+            redirect('admin/pengeluaran');
         }
 }
 }

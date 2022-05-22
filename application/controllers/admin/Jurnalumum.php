@@ -19,9 +19,9 @@ class Jurnalumum extends CI_Controller {
         // }
         $data['account'] = $this->getAllAccount();
         $data['weekending'] = $this->getWeekending();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('jurnalumum/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/jurnalumum/index', $data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function getWeekending() {
@@ -73,11 +73,11 @@ class Jurnalumum extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            redirect('jurnalumum');
+            redirect('admin/jurnalumum');
         }else {
             $this->m_jurnalumum->tambahDataJurnal();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('jurnalumum');
+            redirect('admin/jurnalumum');
         }
     }
     public function edit() {
@@ -93,18 +93,18 @@ class Jurnalumum extends CI_Controller {
         $this->form_validation->set_rules('dikredit2','Dikredit','required');
 
         if ($this->form_validation->run() == FALSE) {
-            redirect('jurnalumum');
+            redirect('admin/jurnalumum');
         }else {
             $this->m_jurnalumum->ubahDataJurnal();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('jurnalumum');
+            redirect('admin/jurnalumum');
         }
 
     }
     public function hapus($id) {
         $this->m_jurnalumum->hapusDataJurnal($id);
         $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('jurnalumum');
+        redirect('admin/jurnalumum');
     }
     
 }

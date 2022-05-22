@@ -10,9 +10,9 @@ class Saving_Overrides extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Summary';
         $data['overrides'] = $this->m_saving->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('savingoverrides/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/savingoverrides/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Saving Overrides';
@@ -28,8 +28,8 @@ class Saving_Overrides extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('savingoverrides/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/savingoverrides/tambah');
         }else {
             $this->m_saving->tambahDataSummary();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -58,12 +58,12 @@ class Saving_Overrides extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('savingoverrides/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/savingoverrides/edit',$data);
         }else {
             $this->m_saving->ubahDataSummary();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('saving_overrides');
+            redirect('admin/saving_overrides');
         }
 }
 }

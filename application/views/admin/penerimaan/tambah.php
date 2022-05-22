@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-3">
     <div class="col">
-      <a href="<?= base_url('penerimaan'); ?>" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
+      <a href="<?= base_url('admin/penerimaan'); ?>" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
     </div>
   </div>
 

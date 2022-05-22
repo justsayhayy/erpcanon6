@@ -11,9 +11,9 @@ class Stok extends CI_Controller {
         $topik['judul'] = 'Halaman Menu Stok_akhir';
         // $data['produk'] = $this->M_barang->tampil_data();
         $data['produk'] = $this->M_barang->get_by_role();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('stok/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/stok/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 //     public function tambah(){
 //         $data['judul'] = 'Form Tambah Data Stok_akhir';

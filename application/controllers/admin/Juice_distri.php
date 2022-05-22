@@ -24,9 +24,9 @@ class Juice_distri extends CI_Controller {
         // if ($this->input->post('keyword')) {
         //     $data['gudang'] = $this->m_gudang->cariDataGudang();
         // }
-        $this->load->view('templates/header',$topik);
-        $this->load->view('distri/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/distri/index',$data);
+        $this->load->view('admin/templates/footer');
     }
 
     public function tampil_data($weekending = NULL) {
@@ -50,12 +50,12 @@ class Juice_distri extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('distri/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/distri/tambah');
         } else {
             $this->m_distri->tambahDataDistri();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('juice_distri');
+            redirect('admin/juice_distri');
         }
     }
 
@@ -68,13 +68,13 @@ class Juice_distri extends CI_Controller {
 
         $this->m_distri->editDataDistri();
         $this->session->set_flashdata('flash','Diedit');
-        redirect('juice_distri');
+        redirect('admin/juice_distri');
     }
    
     public function hapus($id){
         $this->m_distri->hapusDataDistri($id);
         $this->session->set_flashdata('flash','Dihapus');
-        redirect('juice_distri');
+        redirect('admin/juice_distri');
     }
     
 }

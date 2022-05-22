@@ -15,9 +15,9 @@ class Penerimaan extends CI_Controller {
 		$x['data'] = $this->m_penerimaan->tampil_supplier();
 		$x['data2'] = $this->m_penerimaan->tampil_barang();
 		$x['kode1'] = $this->m_penerimaan->kode1();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('penerimaan/index',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/penerimaan/index',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 	 public function index_tampil(){
@@ -28,9 +28,9 @@ class Penerimaan extends CI_Controller {
 		$x['data2'] = $this->m_penerimaan->tampil_barang();
 		$x['kode1'] = $this->m_penerimaan->kode1();
 		$x['get_category'] = $this->m_penerimaan->get_option();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('penerimaan/tampil',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/penerimaan/tampil',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 	public function index_tampil_print(){
@@ -41,9 +41,9 @@ class Penerimaan extends CI_Controller {
 		$x['data2'] = $this->m_penerimaan->tampil_barang();
 		$x['kode1'] = $this->m_penerimaan->kode1();
 		$x['get_category'] = $this->m_penerimaan->get_option();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('penerimaan/tampil_print',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/penerimaan/tampil_print',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 	public function cetak_faktur(){
@@ -68,9 +68,9 @@ class Penerimaan extends CI_Controller {
         $x['data1'] = $this->m_penerimaan->tampil_data();
 		$x['data'] = $this->m_penerimaan->tampil_supplier();
 		$x['kode1'] = $this->m_penerimaan->kode1();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('penerimaan/index_show',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/penerimaan/index_show',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
     public function tambah($print = NULL) {
@@ -80,9 +80,9 @@ class Penerimaan extends CI_Controller {
 		$x['data'] = $this->m_penerimaan->tampil_supplier();
 		$x['data2'] = $this->m_penerimaan->tampil_barang();
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('penerimaan/tambah',$x);
-		$this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$data);
+        $this->load->view('admin/penerimaan/tambah',$x);
+		$this->load->view('admin/templates/footer');
     }
 
     public function tambahDataPenerimaan($print = NULL) {
@@ -139,7 +139,7 @@ class Penerimaan extends CI_Controller {
 
     public function print() {
     	$d['data'] = $this->session->userdata('penerimaan');
-    	$this->load->view('penerimaan/print2', $d);
+    	$this->load->view('admin/penerimaan/print2', $d);
     }
 
 	function tambah_aksi(){
@@ -164,7 +164,7 @@ class Penerimaan extends CI_Controller {
 			);
 		  $this->m_penerimaan->input_data($data,'pembayaran');
 		   $this->session->set_flashdata('flash','Ditambahkan');
-		   redirect('penerimaan/index_tampil_print');		
+		   redirect('admin/penerimaan/index_tampil_print');		
 	}
 	
 	
@@ -176,7 +176,7 @@ class Penerimaan extends CI_Controller {
 			);
 		  $this->m_penerimaan->input_data_akun($data,'akun_pembayaran');
 		   $this->session->set_flashdata('flash','Ditambahkan');
-		   redirect('penerimaan/index_tampil_print');	
+		   redirect('admin/penerimaan/index_tampil_print');	
 	}
 	
 	
@@ -184,9 +184,9 @@ class Penerimaan extends CI_Controller {
         $topik['judul'] = 'Halaman Menu Penerimaan Barang';
          $x['data3'] = $this->m_penerimaan->tampil_data_akun();
 	
-        $this->load->view('templates/header',$topik);
-        $this->load->view('penerimaan/tampil',$x);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/penerimaan/tampil',$x);
+        $this->load->view('admin/templates/footer');
     }
 	
 
@@ -194,14 +194,14 @@ class Penerimaan extends CI_Controller {
 		$where = array('id_akun_pembayaran' => $id);
 		$this->session->set_flashdata('flash2','Dihapus');
 		$this->m_penerimaan->hapus_data($where,'akun_pembayaran');
-		redirect('penerimaan/index_tampil');
+		redirect('admin/penerimaan/index_tampil');
 	}
 	
 	
     public function hapus($id){
         $this->m_penerimaan->hapusDataPenerimaan($id);
         $this->session->set_flashdata('flash','Dihapus');
-        redirect('penerimaan');
+        redirect('admin/penerimaan');
     }
 
     public function edit($id = NULL) {
@@ -230,13 +230,13 @@ class Penerimaan extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $x['penerimaan'] = $this->m_penerimaan->getPenerimaanById($id);
-            $this->load->view('templates/header',$topik);
-            $this->load->view('penerimaan/edit',$x);
-			$this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/penerimaan/edit',$x);
+			$this->load->view('admin/templates/footer');
         } else {
             $this->m_penerimaan->ubahDataPenerimaan();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('penerimaan');
+            redirect('admin/penerimaan');
         }
 	}
 		
@@ -268,13 +268,13 @@ class Penerimaan extends CI_Controller {
 		$this->form_validation->set_rules('supplier','Supplier','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('penerimaan/edit_koreksi',$x);
-			$this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/penerimaan/edit_koreksi',$x);
+			$this->load->view('admin/templates/footer');
         }else {
             $this->m_penerimaan->ubahDataPenerimaan();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('penerimaan/index_tampil_print');
+            redirect('admin/penerimaan/index_tampil_print');
         }
 
 		

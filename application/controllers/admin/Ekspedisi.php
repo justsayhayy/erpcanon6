@@ -10,9 +10,9 @@ class Ekspedisi extends CI_Controller {
     public function index(){
         $topik['judul'] = 'Halaman Menu Ekspedisi';
         $data['daftarekspedisi'] = $this->M_ekspedisi->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('daftarekspedisi/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/daftarekspedisi/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data Ekspedisi';
@@ -21,19 +21,19 @@ class Ekspedisi extends CI_Controller {
         $this->form_validation->set_rules('nama','Nama','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('daftarekspedisi/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/daftarekspedisi/tambah');
         }else {
             $this->M_ekspedisi->tambahDataEkspedisi();
             $this->session->set_flashdata('flash','Ditambahkan');
-            redirect('ekspedisi');
+            redirect('admin/ekspedisi');
         }
         
     }
     public function hapus($id){
         $this->M_ekspedisi->hapusDataEkspedisi($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('ekspedisi');
+        redirect('admin/ekspedisi');
     }
     public function edit($id){
         $topik['judul'] = 'Edit Data Daftar Mitra';
@@ -45,12 +45,12 @@ class Ekspedisi extends CI_Controller {
         
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$topik);
-            $this->load->view('daftarekspedisi/edit',$data);
+            $this->load->view('admin/templates/header',$topik);
+            $this->load->view('admin/daftarekspedisi/edit',$data);
         }else {
             $this->M_ekspedisi->ubahDataEkspedisi();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('ekspedisi');
+            redirect('admin/ekspedisi');
         }
 }
 }

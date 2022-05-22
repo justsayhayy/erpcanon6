@@ -79,12 +79,12 @@ class Auth extends CI_Controller
         // );
         //melakukan pengalihan halaman sesuai dengan levelnya
         if ($this->session->userdata('id_role') == "1") {
-            redirect('dashboard');
+            redirect('admin/dashboard');
                    // Untuk Admin
         }
         if ($this->session->userdata('id_role') == "2") {
             // redirect('pembina');
-            redirect('dashboard2');
+            redirect('admin/dashboard2');
 
             // Untuk Karyawan
         }
@@ -101,10 +101,10 @@ class Auth extends CI_Controller
 
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
                 if ($data->id_role == '1') {
-                    redirect('dashboard');
+                    redirect('admin/dashboard');
                     // Untuk Admin
                 }if ($data->id_role == '2') {
-                    redirect('dashboard2');
+                    redirect('admin/dashboard2');
                     // Untuk Karyawan
                     // redirect('pembina');
             } 
@@ -122,7 +122,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('auth/login');
+        redirect('admin/auth/login');
     }
     public function registrasi(){
         // $site = $this->Konfigurasi_model->listing();
@@ -146,7 +146,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             // $this->load->view('registrasi');
-            $this->load->view('registrasi',$topik);
+            $this->load->view('admin/registrasi',$topik);
 
         }else {
             // echo "Data Berhasil Ditambahkan";
@@ -167,7 +167,7 @@ class Auth extends CI_Controller
                 'updated_at'=>date('Y-m-d H:i:s')
             ];
             $this->db->insert('tbl_user',$data);
-            redirect('auth/login');
+            redirect('admin/auth/login');
         }
 }
 }
