@@ -327,7 +327,7 @@
                     </button>
                     <h4 class="modal-title"></h4>
                 </div>
-                <form role="form" method="post" action="<?php echo base_url().'barang/tambah_aksi'?>">
+                <form role="form" method="post" action="<?php echo base_url().'admin/barang/tambah_aksi'?>">
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-row">
