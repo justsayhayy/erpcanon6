@@ -51,7 +51,7 @@ class Login extends CI_Controller {
                     if ($data['id_role'] == 1) {
                         redirect(base_url('admin/dashboard'));
                     } else {
-                        redirect(base_url('dashboard2'));
+                        redirect(base_url('client/dashboard'));
                     }
                 } else {
                     redirect(base_url('login'));

@@ -77,6 +77,7 @@ class Gudang extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('admin/templates/header',$topik);
             $this->load->view('admin/gudang/edit',$data);
+            $this->load->view('admin/templates/footer');
         }else {
             $this->M_gudang->ubahDataGudang();
             $this->session->set_flashdata('flash','Diubah');

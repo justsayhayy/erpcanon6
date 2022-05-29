@@ -62,7 +62,7 @@
 </div>
 <?php endif;?>
 
-<a href="<?= base_url('users/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
+<a href="<?= base_url('admin/users/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
 <div class="table-responsive">
 <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
 <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="" style="font-size: small;">
@@ -107,9 +107,9 @@
                     </button>
                     <div class="dropdown-menu"> -->
                     <?php if ($usr['activated'] == 1): ?>
-                    <a href="<?= base_url('users/aktivasiUser/').$usr['kode_id']; ?>" class="btn btn-sm btn-warning">Nonaktifkan</a>
+                    <a href="<?= base_url('admin/users/aktivasiUser/').$usr['kode_id']; ?>" class="btn btn-sm btn-warning">Nonaktifkan</a>
                     <?php else: ?>
-                    <a href="<?= base_url('users/aktivasiUser/').$usr['kode_id']; ?>" class="btn btn-sm btn-primary">Aktifkan</a>
+                    <a href="<?= base_url('admin/users/aktivasiUser/').$usr['kode_id']; ?>" class="btn btn-sm btn-primary">Aktifkan</a>
                     <?php endif; ?>
                     
                     <?php if ($usr['id_role'] != 1): ?>

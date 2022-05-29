@@ -192,7 +192,7 @@
 </div>
 <?php endif;?>
  
- 	<a href="<?php echo base_url('penerimaan/tambah'); ?>" class="btn btn-primary mb-2 mt-2">Tambah Data</a>
+ 	<a href="<?php echo base_url('admin/penerimaan/tambah'); ?>" class="btn btn-primary mb-2 mt-2">Tambah Data</a>
  
 <div class="table-responsive">
 <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->

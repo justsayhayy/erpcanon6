@@ -11,9 +11,9 @@ class Users extends CI_Controller
     public function index(){
         $topik['judul'] = 'Halaman Menu User';
         $data['tbl_user'] = $this->M_user->tampil_data();
-        $this->load->view('templates/header',$topik);
-        $this->load->view('user/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/header',$topik);
+        $this->load->view('admin/user/index',$data);
+        $this->load->view('admin/templates/footer');
     }
     public function tambah(){
         $data['judul'] = 'Form Tambah Data User';
@@ -27,8 +27,8 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('id_role','Id_role','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header',$data);
-            $this->load->view('user/tambah');
+            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/user/tambah');
         }else {
             $this->M_user->tambahDataUser();
             $this->session->set_flashdata('flash','Ditambahkan');
@@ -55,9 +55,9 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('new_password2','Confirm New Password','required|trim|min_length[3]|matches[new_password1]');
 		
 		if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header',$topik);
-			$this->load->view('user/changepassword',$data);
-			$this->load->view('templates/footer');
+            $this->load->view('admin/templates/header',$topik);
+			$this->load->view('admin/user/changepassword',$data);
+			$this->load->view('admin/templates/footer');
 
 		} else {
 			$current_password = $this->input->post('current_password');
@@ -91,6 +91,6 @@ class Users extends CI_Controller
         } else {
             $this->session->set_flashdata('active', $data[0]);
         }
-        redirect('users');
+        redirect('admin/users');
     }
 }
