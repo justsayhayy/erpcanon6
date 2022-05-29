@@ -70,9 +70,16 @@ class Transfer_gudang extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('flash_error', validation_errors());
         } else {
+
+            if ( $this->m_transfergudang->cek_tujuan() ) {
+
             $this->m_transfergudang->tambahDataTfGudang();
             $this->session->set_flashdata('flash_success', 'Transfer antar gudang <strong>berhasil</strong> dilakukan!');
-            redirect('barang/allBarang');
+            redirect('admin/barang/allBarang');
+            } else {
+            $this->session->set_flashdata('flash_error', '<strong>GAGAL</strong>, Gudang Tujuan Tidak Ditemukan!');
+            redirect('admin/barang/allBarang');
+            }
         }
     }
 

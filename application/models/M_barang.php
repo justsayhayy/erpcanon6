@@ -72,7 +72,8 @@ class M_barang extends CI_Model
 	}
 	
     public function all_gudang() {
-        $this->db->select('nama');
+
+        $this->db->select('gudang.nama');
         return $this->db->get('gudang')->result_array();
     }
 
@@ -85,10 +86,10 @@ class M_barang extends CI_Model
 			return $query;
 			}
 			
-			public function search_kode()
+    public function search_kode()
 			{
-			$this->db->where('kode =',$this->input->post('kode'));
-			$this->db->where('nama =',$this->input->post('nama'));
+			$this->db->where('kode =',$this->input->get('filter-kode'));
+			$this->db->where('nama =',$this->input->get('filter-nama'));
 			$this->db->from('produk');
 			$query=$this->db->get();
 			return $query;

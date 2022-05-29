@@ -5,6 +5,11 @@ class M_transfergudang extends CI_Model
     public function tampil_data(){
         return $this->db->get('tf_gudang')->result_array();
     }
+    function cek_tujuan() {
+        $this->db->where('kode =',$this->input->post('kode_tfgdg'));
+        $this->db->where('gudang =',$this->input->post('gudang_tujuan_tfgdg'));
+        return $this->db->get('produk')->result_array();
+    }
     public function tambahDataTfGudang() {
         $data = [
             "tgl" => $this->input->post('tgl_tfgdg',true),

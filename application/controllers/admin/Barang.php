@@ -17,6 +17,8 @@ class Barang extends CI_Controller {
         $topik['judul'] = 'Halaman Menu Produk';
        
         $x['data'] = $this->m_barang->show_barang();
+
+        $x['databrg'] = $this->m_barang->show_barang();
         $x['get_category'] = $this->m_barang->get_option();
         $x['get_category1'] = $this->m_barang->get_option1();
         
@@ -66,11 +68,11 @@ class Barang extends CI_Controller {
 	
 	public function search(){
         $topik['judul'] = 'Halaman Menu Produk';
-		$x['data']=$this->m_barang->show_barang();
+		//$x['data'] = $this->m_barang->show_barang();
         $x['data'] = $this->m_barang->search_kode();
 		
         $this->load->view('admin/templates/header',$topik);
-        $this->load->view('barang/search',$x);
+        $this->load->view('admin/barang/search',$x);
         $this->load->view('admin/templates/footer');
     }
 
@@ -188,14 +190,14 @@ class Barang extends CI_Controller {
         }else {
             $this->m_barang->ubahDataProduct();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('barang');
+            redirect('admin/barang');
         }
 
     }
     public function hapus($id){
         $this->m_barang->hapusDataProduk($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('barang');
+        redirect('admin/barang');
     }
     // public function print(){
     //     $data['produk'] = $this->m_mahasiswa->tampil_data('mahasiswa')->result();

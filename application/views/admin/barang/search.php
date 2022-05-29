@@ -18,7 +18,7 @@
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                 <th>Kode Barang</th>
+                                <th>Kode Barang</th>
 								<th>Nama Barang</th>
 								<th>Kategori</th>
 								<th>Manager</th>
@@ -203,7 +203,7 @@
 <!-- <div class="btn-group"> -->
 <div class="row mt-3">
         <div class="col-lg-4">
-             <form action="<?php echo base_url('barang/search');?>" method="post" onsubmit="dummy();return false">
+             <form action="<?php echo base_url('admin/barang/search');?>" method="post" onsubmit="dummy();return false">
                 <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                         <label for="weekending" class="input-group-text">Barang :</label>
@@ -238,12 +238,12 @@
             </form>
         </div>
         <div class="col-lg-2">
-        <form action="<?php echo base_url('barang/index_show');?>" method="post">
+        <form action="<?php echo base_url('admin/barang/index');?>" method="post">
         <button type="submit" class="btn btn-primary">Show All </button>
         </form>
         </div>
         <div class="col-lg-4">
-            <form action="<?php echo base_url('barang/index_search');?>" method="post">
+            <form action="<?php echo base_url('admin/barang/index_search');?>" method="post">
                 <div class="d-flex">
                 <div class="input-group input-group-sm">
                     <!-- <div class="input-group-prepend">
@@ -290,11 +290,11 @@
     </div>
     
 <a href="#" class="btn btn-info mb-2" data-toggle="modal" data-target="#modal_add_new">Tambah Data</a>
-<!-- <a href="<?= base_url('barang/laporan_pdf');?>" class="btn btn-danger mb-2">Export PDF</a> -->
-<a href="<?= base_url('barang/excel');?>" class="btn btn-success mb-2">Export Excel</a>
-<a href="<?= base_url('barang/import_excell');?>" class="btn btn-info mb-2">Import Excel</a>
-<a href="<?= base_url('barang/transfer_gudang');?>" class="btn btn-secondary mb-2">Transfer Antar Gudang</a>
-<a href="<?= base_url('barang/transfer_gudang');?>" class="btn btn-warning mb-2">Return</a>
+<!-- <a href="<?= base_url('admin/barang/laporan_pdf');?>" class="btn btn-danger mb-2">Export PDF</a> -->
+<a href="<?= base_url('admin/barang/excel');?>" class="btn btn-success mb-2">Export Excel</a>
+<a href="<?= base_url('admin/barang/import_excell');?>" class="btn btn-info mb-2">Import Excel</a>
+<a href="<?= base_url('admin/barang/transfer_gudang');?>" class="btn btn-secondary mb-2">Transfer Antar Gudang</a>
+<a href="<?= base_url('admin/barang/transfer_gudang');?>" class="btn btn-warning mb-2">Return</a>
 
 
 

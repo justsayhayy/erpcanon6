@@ -105,7 +105,7 @@
     <table id="lookup" class="table-responsive table table-hover" cellspacing="2" style="font-size:11px;">
         <thead>
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Kategori</th>
@@ -206,7 +206,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a data-toggle="modal" data-target="#modal_edit<?= $id; ?>" class="btn btn-success mt-2" style="margin-left:42px"><i class="fa fa-edit"></i>Edit</i></a>
-                            <a href="<?= base_url();?>barang/hapus/<?= $id; ?>" class="btn btn-danger mt-2" style="margin-left:35px" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
+                            <a href="<?= base_url();?>admin/barang/hapus/<?= $id; ?>" class="btn btn-danger mt-2" style="margin-left:35px" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
                         </div>
                     </div>
                 </td>
@@ -463,6 +463,7 @@
     $setelahpajak=$i['setelahpajak'];
     $hargasetoran=$i['hargasetoran'];
     $jumlah=$i['jumlah'];
+    $id = $i['id'];
     ?>
 
     <!-- ============ MODAL EDIT BARANG =============== -->
@@ -475,7 +476,7 @@
                     </button>
                     <h4 class="modal-title"></h4>
                 </div>
-                <form role="form" method="post" action="<?php echo base_url().'barang/edit'?>">
+                <form role="form" method="post" action="<?php echo base_url().'admin/barang/edit'?>">
                     <div class="modal-body">
                         <section class="content">
                             <div class="row">
@@ -502,7 +503,7 @@
                                                     <select class="form-control"  name="kategori"required>
                                                         <option  value="<?php echo $kategori;?>">Pilih</option>                    
                                                         <?php foreach($get_category as $row) { ?>
-                                                            <option value="<?php echo $row->name;?>"><?php echo $row->name;?></option>
+                                                            <option value="<?php echo $row->kode;?>"><?php echo $row->name;?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -572,22 +573,20 @@
                                             </div>
                                         </div>
                                         <!-- /.box-body -->
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
-                    </div>
+                            </section>
+                        </div> 
+                    
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-info">Edit</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
+
     <?php endforeach; endif;?>
 
     <!-- Modal Transfer Antar Gudang -->
@@ -696,11 +695,11 @@
                         </div>
                         <div class="form-group">
                             <label for="jenis_kendaraan_returnsuppl">Jenis Kendaraan</label>
-                            <input type="text" class="form-control" id="jenis_kendaraan_returnsuppl" placeholder="" name="jenis_kendaraan_returnsuppl">
+                            <input type="text" class="form-control" id="jenis_kendaraan_returnsuppl" placeholder="" name="jenis_kendaraan_returnsuppl" required>
                         </div>
                         <div class="form-group">
                             <label for="no_polisi_returnsuppl">No Polisi</label>
-                            <input type="text" class="form-control" id="no_polisi_returnsuppl" placeholder="" name="no_polisi_returnsuppl">
+                            <input type="text" class="form-control" id="no_polisi_returnsuppl" placeholder="" name="no_polisi_returnsuppl" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -720,6 +719,7 @@
                             <div class="form-group col-md-6">
                                 <label for="barang_returnsuppl">Nama Barang</label>
                                 <input type="text" class="form-control" id="barang_returnsuppl" name="barang_returnsuppl" readonly>
+
                             </div>
                         </div>
                         <div class="form-row">
@@ -729,7 +729,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="supplier_tujuan_returnsuppl">Supplier Tujuan</label>
-                                <select class="form-control" id="supplier_tujuan_returnsuppl" name="supplier_tujuan_returnsuppl">
+                                <select class="form-control" id="supplier_tujuan_returnsuppl" name="supplier_tujuan_returnsuppl" required>
                                 </select>
                             </div>
                         </div>
@@ -844,9 +844,9 @@
         fetch('<?=base_url('admin/barang/all_gudang'); ?>')
             .then(response => response.json())
             .then((result) => {
-                let data = `<option value="">Pilih gudang</option>`;
+                let data = `<option value="">Pilih gudang </option>`;
                 result.forEach(function(e) {
-                    if (e.nama == sessionStorage.getItem('gudang')) {
+                    if ( (e.nama == sessionStorage.getItem('gudang')) ) {
                         data += '';
                     } else {
                         data += `<option value="${e.nama}">${e.nama}</option>`;
