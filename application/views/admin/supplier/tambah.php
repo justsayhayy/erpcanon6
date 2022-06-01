@@ -6,7 +6,7 @@
 <div class="container">
         <div class="col-md-6">
             <h2>Form Tambah Data</h2>
-            <form action="<?= base_url('supplier/tambah');?>" class="form-horizontal" method="POST">
+            <form action="<?= base_url('admin/supplier/tambah');?>" class="form-horizontal" method="POST">
             <div class="form-group">
                     <label for="kode">Kode</label>
                     <input type="text" class="form-control" id="kode" name="kode" value="SPL-<?php echo sprintf("%04s", $kode) ?>" readonly>
@@ -32,7 +32,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary mb-2">Tambah Data</button>
-                <a href="<?=base_url('supplier');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/supplier');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

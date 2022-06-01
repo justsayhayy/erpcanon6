@@ -66,8 +66,8 @@
                
             </form> -->
 
-<a href="<?= base_url('daftar_mitra/tambah');?>" class="btn btn-primary mb-2 mt-2">Tambah Data</a>
-<a href="<?= base_url('daftar/export');?>" class="btn btn-danger mb-2 mt-2">Export PDF</a>
+<a href="<?= base_url('admin/daftar_mitra/tambah');?>" class="btn btn-primary mb-2 mt-2">Tambah Data</a>
+<a href="<?= base_url('admin/daftar/export');?>" class="btn btn-danger mb-2 mt-2">Export PDF</a>
 
 <div class="table-responsive pt-2 pr-2">
 <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
@@ -137,8 +137,8 @@
                         Action
                     </button>
                     <div class="dropdown-menu">
-                    <a href="<?php echo base_url();?>daftar/edit/<?= $daf['id'];?>" class="btn btn-success" style="margin-left:42px"><i class="fa fa-edit"></i>Edit</i></a>
-                    <a href="<?= base_url();?>daftar/hapus/<?= $daf['id'];?>" class="btn btn-danger mt-2" style="margin-left:35px" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
+                    <a href="<?php echo base_url();?>admin/daftar_mitra/edit/<?= $daf['id'];?>" class="btn btn-success" style="margin-left:42px"><i class="fa fa-edit"></i>Edit</i></a>
+                    <a href="<?= base_url();?>admin/daftar_mitra/hapus/<?= $daf['id'];?>" class="btn btn-danger mt-2" style="margin-left:35px" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
                     </div>
                 </div>
                 </td>

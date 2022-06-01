@@ -10,7 +10,7 @@
             <input type="hidden" name="id" class="form-control" value="<?= $supplier['id'];?>">
             <div class="form-group">
                     <label for="">Kode</label>
-                    <input type="text" name="kode" placeholder="Masukkan Kode" class="form-control" value="<?= $supplier['kode'];?>">
+                    <input type="text" name="kode" placeholder="Masukkan Kode" class="form-control" value="<?= $supplier['kode'];?>" readonly>
                     <small><span class="text-danger"><?=form_error('kode');?></span></small>
                 </div>
                 <div class="form-group">
@@ -30,7 +30,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary mb-2">Edit Data</button>
-                <a href="<?=base_url('supplier');?>" class="btn btn-success mb-2">Kembali</a>
+                <a href="<?=base_url('admin/supplier');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
         </div>
     </div>

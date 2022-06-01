@@ -53,28 +53,42 @@ class Daftar_mitra extends CI_Controller {
         
     }
     public function hapus($id){
-        $this->M_supplier->hapusDataSupplier($id);
+        $this->M_daftar->hapusDatadaftar_mitra($id);
         $this->session->set_flashdata('flash2','Dihapus');
-        redirect('supplier');
+        redirect('admin/daftar_mitra');
     }
+
+
     public function edit($id){
-        $topik['judul'] = 'Edit Data Supplier';
-        $data['supplier'] = $this->M_supplier->getSupplierById($id);
+        $topik['judul'] = 'Edit Data Mitra';
+        $data['daftarmitra'] = $this->M_daftar->getdaftar_mitraById($id);
         // $data['program'] = ['Teknik Informatika','Teknik Elektro','Bahasa Indonesia','Bahasa Inggris','Matematika','PKN'];
 
         $this->form_validation->set_rules('kode','Kode','required');
-        $this->form_validation->set_rules('nama','Nama','required');
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('tgl_lahir','Tgl_lahir','required');
+        $this->form_validation->set_rules('jabatan','Jabatan','required');
+        $this->form_validation->set_rules('promoter','Promoter','required');
+        $this->form_validation->set_rules('thn_gabung','Thn_gabung','required');
+        $this->form_validation->set_rules('gudang','Gudang','required');
         $this->form_validation->set_rules('alamat','Alamat','required');
+        $this->form_validation->set_rules('kota','Kota','required');
         $this->form_validation->set_rules('telepon','Telepon','required');
+        $this->form_validation->set_rules('email','email','required');
         
 
         if ($this->form_validation->run() == FALSE) {
+
+            $data['jabatan'] = $this->M_daftar->tampil_jabatan();
+            $data['gudang'] = $this->M_daftar->tampil_gudang();
+
             $this->load->view('admin/templates/header',$topik);
-            $this->load->view('admin/supplier/edit',$data);
+            $this->load->view('admin/daftarmitra/edit',$data);
+            $this->load->view('admin/templates/footer');
         }else {
-            $this->M_supplier->ubahDataSupplier();
+            $this->M_daftar->ubahDatadaftar_mitra();
             $this->session->set_flashdata('flash','Diubah');
-            redirect('admin/supplier');
+            redirect('admin/daftar_mitra');
         }
 }
 }

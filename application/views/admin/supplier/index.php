@@ -36,7 +36,7 @@
    
 <!-- </div> -->
 </h2>
-<a href="<?= base_url('supplier/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
+<a href="<?= base_url('admin/supplier/tambah');?>" class="btn btn-info mb-2">Tambah Data</a>
 <div class="table-responsive pt-2 pr-2">
 <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
 <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="" style="font-size: small;">
@@ -77,8 +77,8 @@
                         Action
                     </button>
                     <div class="dropdown-menu"> -->
-                    <a href="<?php echo base_url();?>supplier/edit/<?= $erp['id'];?>" class="btn btn-success" style=""><i class="fa fa-edit"></i>Edit</i></a>
-                    <a href="<?= base_url();?>supplier/hapus/<?= $erp['id'];?>" class="btn btn-danger " style="" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
+                    <a href="<?php echo base_url();?>admin/supplier/edit/<?= $erp['id'];?>" class="btn btn-success" style=""><i class="fa fa-edit"></i>Edit</i></a>
+                    <a href="<?= base_url();?>admin/supplier/hapus/<?= $erp['id'];?>" class="btn btn-danger " style="" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i>Hapus</a>
                     <!-- </div> -->
                 <!-- </div> -->
                 </td>

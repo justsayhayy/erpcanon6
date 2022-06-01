@@ -7,11 +7,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="inputKode">ID</label>
-                <input type="text" class="form-control" id="inputKode" name="kode_id"  value="<?= $daftarmitra['kode_id'];?>">
+                <input type="text" class="form-control" id="inputKode" name="kode"  value="<?= $daftarmitra['kode'];?>" readonly>
                 </div>
                 <div class="form-group col-md-6">
                 <label for="inputNama">Nama</label>
-                <input type="text" class="form-control" id="inputNama" name="nama"  value="<?= $daftarmitra['nama'];?>">
+                <input type="text" class="form-control" id="inputNama" name="name"  value="<?= $daftarmitra['name'];?>">
                 </div>
             </div>
             <div class="form-row">
@@ -23,10 +23,10 @@
                 <label for="dosen_pa">Jabatan</label>
                 <select name="jabatan" id="jabatan" class="form-control">
                     <?php foreach ($jabatan as $pr) :?>
-                        <?php if ($pr == $pilih['jabatan']) :?>
-                    <option value="<?=$pr;?>" selected><?=$pr;?></option>
+                        <?php if ($pr['name'] == $daftarmitra['jabatan']) :?>
+                    <option value="<?=$pr['name'];?>" selected><?=$pr['name'];?></option>
                         <?php else :?>
-                    <option value="<?=$pr;?>"><?=$pr;?></option>
+                    <option value="<?=$pr['name'];?>"><?=$pr['name'];?></option>
                         <?php endif;?>
                     <?php endforeach;?>
                     </select>
@@ -45,7 +45,7 @@
                 <label for="inputGudang">Gudang</label>
                 <select name="gudang" id="gudang" class="form-control">
                     <?php foreach ($gudang as $pr) :?>
-                        <?php if ($pr == $pilih['nama']) :?>
+                        <?php if ($pr['nama'] == $daftarmitra['gudang']) :?>
                     <option value="<?=$pr['nama'];?>" selected><?=$pr['nama'];?></option>
                         <?php else :?>
                     <option value="<?=$pr['nama'];?>"><?=$pr['nama'];?></option>
@@ -75,7 +75,7 @@
                
 
             <button type="submit" class="btn btn-primary mb-2">Edit Data</button>
-            <a href="<?= base_url('daftar');?>" class="btn btn-success mb-2">Kembali</a>
+            <a href="<?= base_url('admin/daftar_mitra');?>" class="btn btn-success mb-2">Kembali</a>
             </form>
     </div>
 </div>

@@ -3,7 +3,7 @@
         <!-- <h5>Tambah Form Data</h5> -->
 
         <!-- <form action="" method="POST">  -->
-        <form action="<?= base_url() ?>daftar_mitra/tambah" method="post">
+        <form action="<?= base_url() ?>admin/daftar_mitra/tambah" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="kode">ID</label>
@@ -82,7 +82,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary mb-2">Tambah Data</button>
-            <a href="<?= base_url('daftar_mitra');?>" class="btn btn-success">Kembali</a>
+            <a href="<?= base_url('admin/daftar_mitra');?>" class="btn btn-success">Kembali</a>
             </form>
     </div>
 </div>
