@@ -268,32 +268,6 @@
     </table>
         <div class="col-lg-4">
 
-			 <?php 
-          $no = 1;				 
-         foreach($data3->result_array() as $i):
-		  $sum_total_qty=$i['sum_total_qty'];
-		  ?>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <label for="weekending" class="input-group-text">Total Qty :</label>
-                    </div>
-                    <input type="text" value="<?php echo $sum_total_qty ?>" class="form-control form-control-sm">
-                </div>
-				<?php endforeach; ?>
-				 <?php 	
-          $no = 1;					 
-         foreach($data4->result_array() as $i):
-		  $sum_total_harga=$i['sum_total_harga'];
-		  ?>
-                
-                <div class="input-group input-group-sm my-2">
-                    <div class="input-group-prepend">
-                        <label for="namawin2mgr" class="input-group-text">Total Harga :</label>
-                    </div>
-                    <input type="text" value="<?php echo $sum_total_harga ?>" class="form-control form-control-sm">
-                    <!-- <input type="text" name="namawin2mgr" id="namawin2mgr" class="form-control form-control-sm"> -->
-                </div>
-				<?php endforeach; ?>
                 
             
         </div>
