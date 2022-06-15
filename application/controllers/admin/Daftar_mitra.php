@@ -5,6 +5,7 @@ class Daftar_mitra extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('M_daftar');
+        $this->load->model('m_barang');
         $this->load->library('form_validation');
     }
     public function index(){
@@ -39,7 +40,8 @@ class Daftar_mitra extends CI_Controller {
             $kodeMitraSekarang = $nourut + 1;
             $data = array("kode" => $kodeMitraSekarang);
             $data['jabatan'] = $this->M_daftar->tampil_jabatan();
-            $data['gudang'] = $this->M_daftar->tampil_gudang();
+            $data['gudang'] = $this->M_daftar->tampil_gudang(); 
+            $data['databrg'] = $this->M_daftar->tampil_data();
             
             // $data['jabatan'] = ['Vice President','Divisional Manager','Branch Manager','Tenant Manager','Assistant Manager','Win-win Manager','Top Leader','Leader'];
             $this->load->view('admin/templates/header',$data2);

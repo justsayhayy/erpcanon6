@@ -7,6 +7,7 @@ class Ekspedisi extends CI_Controller {
         $this->load->model('M_ekspedisi');
         $this->load->library('form_validation');
     }
+
     public function index(){
         $topik['judul'] = 'Halaman Menu Ekspedisi';
         $data['daftarekspedisi'] = $this->M_ekspedisi->tampil_data();
@@ -14,14 +15,14 @@ class Ekspedisi extends CI_Controller {
         $this->load->view('admin/daftarekspedisi/index',$data);
         $this->load->view('admin/templates/footer');
     }
-    public function tambah(){
-        $data['judul'] = 'Form Tambah Data Ekspedisi';
 
+    public function tambah(){
+        $topik['judul'] = 'Form Tambah Data Ekspedisi';
         $this->form_validation->set_rules('kode','Kode','required');
         $this->form_validation->set_rules('nama','Nama','required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('admin/templates/header',$data);
+            $this->load->view('admin/templates/header',$topik);
             $this->load->view('admin/daftarekspedisi/tambah');
         }else {
             $this->M_ekspedisi->tambahDataEkspedisi();
@@ -30,11 +31,14 @@ class Ekspedisi extends CI_Controller {
         }
         
     }
+
     public function hapus($id){
         $this->M_ekspedisi->hapusDataEkspedisi($id);
         $this->session->set_flashdata('flash2','Dihapus');
         redirect('admin/ekspedisi');
     }
+
+
     public function edit($id){
         $topik['judul'] = 'Edit Data Daftar Mitra';
         $data['daftarekspedisi'] = $this->M_ekspedisi->getEkspedisiById($id);
@@ -52,5 +56,7 @@ class Ekspedisi extends CI_Controller {
             $this->session->set_flashdata('flash','Diubah');
             redirect('admin/ekspedisi');
         }
-}
+    }
+
+
 }
