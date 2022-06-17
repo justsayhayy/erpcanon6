@@ -63,8 +63,17 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-info mb-2" onclick="tambahData('JR')"><i class="fa fa-plus"></i> Jurnal</button>
-        <button type="button" class="btn btn-info mb-2" onclick="tambahData('JP')"><i class="fa fa-plus"></i> Jurnal Penyesuaian</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="jurnal" onclick="content(title = 'Input Data Jurnal')">
+          Jurnal
+        </button>
+
+        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="pjurnal" onclick="content(title = 'Penyesuaian Jurnal')">
+          Jurnal Penyesuaian
+        </button>
+
+        <!-- <button type="button" class="btn btn-info mb-2" onclick="tambahData('JR')"><i class="fa fa-plus"></i> Jurnal</button>
+        <button type="button" class="btn btn-info mb-2" onclick="tambahData('JP')"><i class="fa fa-plus"></i> Jurnal Penyesuaian</button> -->
         <a href="" class="btn btn-success mb-2">Export Excel</a>
         <div class="table-responsive">
           <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
@@ -113,7 +122,7 @@
       </div>
 
       <!-- Modal Tambah -->
-      <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -197,10 +206,10 @@
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Modal Edit -->
-      <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -285,6 +294,82 @@
             </form>
           </div>
         </div>
+      </div> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="jurnalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="jurnalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="date" name="tgl" class="form-control" id="tanggal">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="transaksi">Transaksi</label>
+                    <input type="text" name="transaksi" class="form-control" id="transaksi">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="no_bukti">No. Bukti</label>
+                    <input type="text" name="no_bukti" class="form-control" id="no_bukti">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="jumlah">Jumlah</label>
+                    <input type="text" value="0" name="jumlah" class="form-control" id="jumlah">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="kode_debit">Debit</label>
+                    <select name="kode_debit" id="kode_debit" class="form-control">
+                      <option value="">--Pilih Debit--</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="akun_debit">Akun Debit</label>
+                    <input type="text" name="akun_debit" class="form-control" id="akun_debit" readonly>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="kode_kredit">Kredit</label>
+                    <select name="kode_kredit" id="kode_kredit" class="form-control">
+                      <option value="">--Pilih Kredit--</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="akun_kredit">Akun Kredit</label>
+                    <input type="text" name="akun_kredit" class="form-control" id="akun_kredit" readonly>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="didebit">Didebit</label>
+                    <input type="text" value="0" name="didebit" class="form-control" id="didebit">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="dikredit">DiKredit</label>
+                    <input type="text" value="0" name="dikredit" class="form-control" id="dikredit">
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+          </div>
+        </div>
       </div>
 
       <script>
@@ -292,4 +377,9 @@
         // weekending.addEventListener("change", function() {
         //   console.log(weekending.value)
         // });
+
+        function content(title) {
+          // console.log(title);
+          document.getElementById('jurnalLabel').innerHTML = title;
+        }
       </script>
