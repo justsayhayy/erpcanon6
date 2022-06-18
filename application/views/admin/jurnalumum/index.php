@@ -35,7 +35,7 @@
                   <label class="input-group-text" for="weekending">Weekending</label>
                 </div>
                 <select class="form-control" id="weekending" name="s">
-                  <option value="">Pilih tanggal</option>
+                  <option value="">--Pilih--</option>
                   <option value="all">Show All</option>
                   <option value="up">Weekending Up</option>
                   <?php foreach ($weekending as $week) : ?>
@@ -64,16 +64,14 @@
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="jurnal" onclick="content(title = 'Input Data Jurnal')">
+        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="jurnal" onclick="content(title = 'Input Data Jurnal')"><i class="fa fa-plus"></i>
           Jurnal
         </button>
 
-        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="pjurnal" onclick="content(title = 'Penyesuaian Jurnal')">
+        <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#jurnalModal" id="pjurnal" onclick="content(title = 'Penyesuaian Jurnal')"><i class="fa fa-plus"></i>
           Jurnal Penyesuaian
         </button>
 
-        <!-- <button type="button" class="btn btn-info mb-2" onclick="tambahData('JR')"><i class="fa fa-plus"></i> Jurnal</button>
-        <button type="button" class="btn btn-info mb-2" onclick="tambahData('JP')"><i class="fa fa-plus"></i> Jurnal Penyesuaian</button> -->
         <a href="" class="btn btn-success mb-2">Export Excel</a>
         <div class="table-responsive">
           <!-- <table class="table" id="dataTable" width="" cellspacing="0"> -->
@@ -296,6 +294,7 @@
         </div>
       </div> -->
 
+
       <!-- Modal -->
       <div class="modal fade" id="jurnalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -307,7 +306,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="<?= base_url('admin/jurnalumum/tambah') ?>" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="tanggal">Tanggal</label>
@@ -321,7 +320,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="no_bukti">No. Bukti</label>
-                    <input type="text" name="no_bukti" class="form-control" id="no_bukti">
+                    <input type="text" name="no_bukti" value="<?= $no_bukti ?>" class="form-control" id="no_bukti" readonly>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="jumlah">Jumlah</label>
@@ -331,25 +330,31 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="kode_debit">Debit</label>
-                    <select name="kode_debit" id="kode_debit" class="form-control">
+                    <select name="kode_debit" id="kode_debit" class="form-control" onchange="debitChange(this)">
                       <option value="">--Pilih Debit--</option>
+                      <?php foreach ($all_kas as $k) : ?>
+                        <option value="<?= $k['kode'] . "-" . $k['nama'] ?>"><?= $k['kode'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="akun_debit">Akun Debit</label>
-                    <input type="text" name="akun_debit" class="form-control" id="akun_debit" readonly>
+                    <input type="text" name="akun_debit" id="akun_debit" class="form-control" id="akun_debit" value="" readonly>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="kode_kredit">Kredit</label>
-                    <select name="kode_kredit" id="kode_kredit" class="form-control">
+                    <select name="kode_kredit" id="kode_kredit" class="form-control" onchange="kreditChange(this)">
                       <option value="">--Pilih Kredit--</option>
+                      <?php foreach ($all_kas as $k) : ?>
+                        <option value="<?= $k['kode'] . "-" . $k['nama'] ?>"><?= $k['kode'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="akun_kredit">Akun Kredit</label>
-                    <input type="text" name="akun_kredit" class="form-control" id="akun_kredit" readonly>
+                    <input type="text" name="akun_kredit" class="form-control" id="akun_kredit" value="" readonly>
                   </div>
                 </div>
                 <div class="form-row">
@@ -381,5 +386,19 @@
         function content(title) {
           // console.log(title);
           document.getElementById('jurnalLabel').innerHTML = title;
+        }
+
+        function debitChange(selectedObject) {
+          var value = selectedObject.value;
+          var updating = document.getElementById('akun_debit');
+          updating.value = value.substr(6);
+          // console.log(selectedObject);
+        }
+
+        function kreditChange(selectedObject) {
+          var value = selectedObject.value;
+          var updating = document.getElementById('akun_kredit');
+          updating.value = value.substr(6);
+          // console.log(selectedObject);
         }
       </script>

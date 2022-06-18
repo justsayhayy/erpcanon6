@@ -51,6 +51,20 @@ class M_jurnalumum extends CI_Model
         return $this->db->get('jurnalumum')->result_array();
     }
 
+    public function getBuktiTransaksi()
+    {
+        // take no_bukti
+        $this->db->select_max('no_bukti');
+        $noUrut = $this->db->get('jurnalumum')->row()->no_bukti;
+        $noUrut = substr($noUrut, 10) + 1;
+        return 'JR/' . date('d') . date('m') . date('y') . '/' . sprintf('%05s', $noUrut);
+    }
+
+    public function getAllKas()
+    {
+        return $this->db->get('tbl_kas')->result_array();
+    }
+
 
     public function getAllAccount()
     {
@@ -99,79 +113,84 @@ class M_jurnalumum extends CI_Model
         return $this->db->get('jurnalumum')->result_array();
     }
 
-    public function tambahDataJurnal()
+    public function tambahkanData($table, $data)
     {
-        $debit = $this->cekSaldoAkun($this->input->post('kode_debit', true));
-        $kredit = $this->cekSaldoAkun($this->input->post('kode_kredit', true));
-
-        if (!$debit) {
-            $this->db->select('saldo_default');
-            $this->db->from('chartofaccount');
-            $this->db->where('kode', $this->input->post('kode_debit', true));
-            $s = $this->db->get()->row_array();
-            $saldo_debit = (int)$s['saldo_default'] + (int)$this->input->post('didebit', true);
-            $this->tambahLogAkun(0, $saldo_debit, (int)$this->input->post('kode_debit', true));
-        } else {
-            $saldo_debit = (int)$debit['saldo_akhir'] + (int)$this->input->post('didebit', true);
-            $this->tambahLogAkun($debit['saldo_akhir'], $saldo_debit, (int)$this->input->post('kode_debit', true));
-        }
-
-        if (!$kredit) {
-            $this->db->select('saldo_default');
-            $this->db->from('chartofaccount');
-            $this->db->where('kode', $this->input->post('kode_kredit', true));
-            $s = $this->db->get()->row_array();
-            $saldo_kredit = (int)$s['saldo_default'] - (int)$this->input->post('dikredit', true);
-            $this->tambahLogAkun(0, $saldo_kredit, (int)$this->input->post('kode_kredit', true));
-        } else {
-            $saldo_kredit = (int)$kredit['saldo_akhir'] - (int)$this->input->post('dikredit', true);
-            $this->tambahLogAkun($kredit['saldo_akhir'], $saldo_kredit, (int)$this->input->post('kode_kredit', true));
-        }
-
-        $date = date_create($this->input->post('tgl', true));
-
-        $data = [
-            // "product_id"=>$this->input->post('product_id',true),
-            "tgl" => $this->input->post('tgl', true),
-            "transaksi" => $this->input->post('transaksi', true),
-            "no_bukti" => $this->input->post('no_bukti', true),
-            "jumlah" => $this->input->post('jumlah', true),
-            "kode_debit" => $this->input->post('kode_debit', true),
-            "kode_kredit" => $this->input->post('kode_kredit', true),
-            "nama_akundebit" => $this->input->post('nama_akundebit', true),
-            "didebit" => $this->input->post('didebit', true),
-            "nama_akunkredit" => $this->input->post('nama_akunkredit', true),
-            "dikredit" => $this->input->post('dikredit', true),
-            "tutup_buku" => "T"
-        ];
-
-        $data2 = [[
-            // "product_id"=>$this->input->post('product_id',true),
-            "tgl" => date_format($date, 'Y-m-d'),
-            "kode" => $this->input->post('kode_debit', true),
-            "transaksi" => $this->input->post('transaksi', true),
-            "no_bukti" => $this->input->post('no_bukti', true),
-            "debit" => $this->input->post('didebit', true),
-            "kredit" => null,
-            "tutup_buku" => "T"
-
-            // "image"=>$this->image = $this->_uploadImage()
-        ], [
-            // "product_id"=>$this->input->post('product_id',true),
-            "tgl" => date_format($date, 'Y-m-d'),
-            "kode" => $this->input->post('kode_kredit', true),
-            "transaksi" => $this->input->post('transaksi', true),
-            "no_bukti" => $this->input->post('no_bukti', true),
-            "debit" => null,
-            "kredit" => $this->input->post('dikredit', true),
-            "tutup_buku" => "T"
-
-            // "image"=>$this->image = $this->_uploadImage()
-        ]];
-
-        $this->db->insert('jurnalumum', $data);
-        $this->db->insert_batch('bukubesar', $data2);
+        $this->db->insert($table, $data);
     }
+
+    // public function tambahDataJurnal()
+    // {
+    //     $debit = $this->cekSaldoAkun($this->input->post('kode_debit', true));
+    //     $kredit = $this->cekSaldoAkun($this->input->post('kode_kredit', true));
+
+    //     if (!$debit) {
+    //         $this->db->select('saldo_default');
+    //         $this->db->from('chartofaccount');
+    //         $this->db->where('kode', $this->input->post('kode_debit', true));
+    //         $s = $this->db->get()->row_array();
+    //         $saldo_debit = (int)$s['saldo_default'] + (int)$this->input->post('didebit', true);
+    //         $this->tambahLogAkun(0, $saldo_debit, (int)$this->input->post('kode_debit', true));
+    //     } else {
+    //         $saldo_debit = (int)$debit['saldo_akhir'] + (int)$this->input->post('didebit', true);
+    //         $this->tambahLogAkun($debit['saldo_akhir'], $saldo_debit, (int)$this->input->post('kode_debit', true));
+    //     }
+
+    //     if (!$kredit) {
+    //         $this->db->select('saldo_default');
+    //         $this->db->from('chartofaccount');
+    //         $this->db->where('kode', $this->input->post('kode_kredit', true));
+    //         $s = $this->db->get()->row_array();
+    //         $saldo_kredit = (int)$s['saldo_default'] - (int)$this->input->post('dikredit', true);
+    //         $this->tambahLogAkun(0, $saldo_kredit, (int)$this->input->post('kode_kredit', true));
+    //     } else {
+    //         $saldo_kredit = (int)$kredit['saldo_akhir'] - (int)$this->input->post('dikredit', true);
+    //         $this->tambahLogAkun($kredit['saldo_akhir'], $saldo_kredit, (int)$this->input->post('kode_kredit', true));
+    //     }
+
+    //     $date = date_create($this->input->post('tgl', true));
+
+    //     $data = [
+    //         // "product_id"=>$this->input->post('product_id',true),
+    //         "tgl" => $this->input->post('tgl', true),
+    //         "transaksi" => $this->input->post('transaksi', true),
+    //         "no_bukti" => $this->input->post('no_bukti', true),
+    //         "jumlah" => $this->input->post('jumlah', true),
+    //         "kode_debit" => $this->input->post('kode_debit', true),
+    //         "kode_kredit" => $this->input->post('kode_kredit', true),
+    //         "nama_akundebit" => $this->input->post('nama_akundebit', true),
+    //         "didebit" => $this->input->post('didebit', true),
+    //         "nama_akunkredit" => $this->input->post('nama_akunkredit', true),
+    //         "dikredit" => $this->input->post('dikredit', true),
+    //         "tutup_buku" => "T"
+    //     ];
+
+    //     $data2 = [[
+    //         // "product_id"=>$this->input->post('product_id',true),
+    //         "tgl" => date_format($date, 'Y-m-d'),
+    //         "kode" => $this->input->post('kode_debit', true),
+    //         "transaksi" => $this->input->post('transaksi', true),
+    //         "no_bukti" => $this->input->post('no_bukti', true),
+    //         "debit" => $this->input->post('didebit', true),
+    //         "kredit" => null,
+    //         "tutup_buku" => "T"
+
+    //         // "image"=>$this->image = $this->_uploadImage()
+    //     ], [
+    //         // "product_id"=>$this->input->post('product_id',true),
+    //         "tgl" => date_format($date, 'Y-m-d'),
+    //         "kode" => $this->input->post('kode_kredit', true),
+    //         "transaksi" => $this->input->post('transaksi', true),
+    //         "no_bukti" => $this->input->post('no_bukti', true),
+    //         "debit" => null,
+    //         "kredit" => $this->input->post('dikredit', true),
+    //         "tutup_buku" => "T"
+
+    //         // "image"=>$this->image = $this->_uploadImage()
+    //     ]];
+
+    //     $this->db->insert('jurnalumum', $data);
+    //     $this->db->insert_batch('bukubesar', $data2);
+    // }
 
     public function cekSaldoAkun($kode)
     {

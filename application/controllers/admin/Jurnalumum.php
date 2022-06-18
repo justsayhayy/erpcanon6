@@ -26,7 +26,10 @@ class Jurnalumum extends CI_Controller
             $select = 'all';
         }
         $data['all'] = $this->m_jurnalumum->selectingData($select);
-        // var_dump($data['all']);
+        $data['no_bukti'] = $this->m_jurnalumum->getBuktiTransaksi();
+        $data['all_kas'] = $this->m_jurnalumum->getAllKas();
+
+        // var_dump($this->m_jurnalumum->getAllKas());
         // die();
         $data['account'] = $this->getAllAccount();
         $data['weekending'] = $this->getWeekending();
@@ -106,22 +109,46 @@ class Jurnalumum extends CI_Controller
 
         $data['judul'] = 'Form Tambah Data';
 
+        // var_dump($_POST);
+        // die();
+
         $this->form_validation->set_rules('tgl', 'Tanggal', 'required');
         $this->form_validation->set_rules('transaksi', 'Transaksi', 'required');
         $this->form_validation->set_rules('no_bukti', 'No_Bukti', 'required');
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('kode_debit', 'Kode_Debit', 'required');
         $this->form_validation->set_rules('kode_kredit', 'Kode_Kredit', 'required');
-        $this->form_validation->set_rules('nama_akundebit', 'Nama_Akundebit', 'required');
+        $this->form_validation->set_rules('akun_debit', 'Nama_Akundebit', 'required');
         $this->form_validation->set_rules('didebit', 'Didebit', 'required');
-        $this->form_validation->set_rules('nama_akunkredit', 'Nama_Akunkredit', 'required');
+        $this->form_validation->set_rules('akun_kredit', 'Nama_Akunkredit', 'required');
         $this->form_validation->set_rules('dikredit', 'Dikredit', 'required');
 
 
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() == FALSE) {            // echo "ada yg kosong";
+
             redirect('admin/jurnalumum');
         } else {
-            $this->m_jurnalumum->tambahDataJurnal();
+            // echo "ada semua";
+            $kode_debit = substr($this->input->post('kode_debit'), 2, 3);
+            $kode_kredit = substr($this->input->post('kode_kredit'),  2, 3);
+            $table = 'jurnalumum';
+            $data = array(
+                'tgl' => $this->input->post('tgl'),
+                'transaksi' => $this->input->post('transaksi'),
+                'no_bukti' => $this->input->post('no_bukti'),
+                'jumlah' => $this->input->post('jumlah'),
+                'kode_kredit' => $kode_kredit,
+                'kode_debit' => $kode_debit,
+                'nama_akundebit' => $this->input->post('akun_debit'),
+                'nama_akunkredit' => $this->input->post('akun_kredit'),
+                'didebit' => $this->input->post('didebit'),
+                'dikredit' => $this->input->post('dikredit'),
+            );
+
+            // var_dump($data);
+            // die();
+            $this->m_jurnalumum->tambahkanData($table, $data);
+            // $this->m_jurnalumum->tambahDataJurnal();
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('admin/jurnalumum');
         }
