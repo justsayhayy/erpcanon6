@@ -309,15 +309,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php
-              var_dump($did);
-
-              ?>
               <form action="<?= base_url('admin/jurnalumum/tambah') ?>" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="tanggal">Tanggal</label>
-                    <input type="date" name="tgl" value="<?= isset($did) ? $did['tgl'] : '' ?>" class="form-control" id="tanggal">
+                    <input type="date" name="tgl" class="form-control" id="tanggal">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="transaksi">Transaksi</label>
