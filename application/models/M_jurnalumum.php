@@ -118,6 +118,12 @@ class M_jurnalumum extends CI_Model
         $this->db->insert($table, $data);
     }
 
+    public function ubahData($table, $data, $id)
+    {
+        $this->db->where('id', $id);
+        $this->db->update($table, $data);
+    }
+
     // public function tambahDataJurnal()
     // {
     //     $debit = $this->cekSaldoAkun($this->input->post('kode_debit', true));
@@ -366,5 +372,10 @@ class M_jurnalumum extends CI_Model
     //     // produk.*,tbl_category.id AS id_role,tbl_category.name');
     //     // return $this->db->get('produk')->result_array();
 
-    // }
+    // }    
+
+    public function hapusSingleData($table, $id)
+    {
+        $this->db->delete($table, array('id' => $id));
+    }
 }

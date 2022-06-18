@@ -18,7 +18,7 @@
         <?php if ($this->session->flashdata('flash')) : ?>
           <div class="row mt-3">
             <div class="col md-6">
-              <div class="alert alert-success alert-dismissible fade show" role="alert">Data Jurnal Umum<strong>berhasil </strong><?= $this->session->flashdata('flash'); ?>
+              <div class="alert alert-success alert-dismissible fade show" role="alert"><?= $this->session->flashdata('flash'); ?>
                 <button type="submit" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
             </div>
@@ -109,8 +109,11 @@
                   <td><?= $d['nama_akunkredit'] ?></td>
                   <td><?= $d['dikredit'] ?></td>
                   <td>
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-warning mt-1">Delete</button>
+                    <a href="<?= base_url('admin/jurnalumum/form_edit/' . $d["id"] . '') ?>" class="btn btn-info">Edit</a>
+                    <form action="<?= base_url('admin/jurnalumum/hapus') ?>" method="POST">
+                      <input type="hidden" name="id" value="<?= $d['id'] ?>">
+                      <button type="submit" class="btn btn-danger mt-1">Delete</button>
+                    </form>
                   </td>
                 </tr>
               <?php endforeach; ?>
@@ -306,11 +309,15 @@
               </button>
             </div>
             <div class="modal-body">
+              <?php
+              var_dump($did);
+
+              ?>
               <form action="<?= base_url('admin/jurnalumum/tambah') ?>" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="tanggal">Tanggal</label>
-                    <input type="date" name="tgl" class="form-control" id="tanggal">
+                    <input type="date" name="tgl" value="<?= isset($did) ? $did['tgl'] : '' ?>" class="form-control" id="tanggal">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="transaksi">Transaksi</label>
